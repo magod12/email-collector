@@ -37,7 +37,8 @@
     </main>
 
     <script>
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9E89e7FR98z4oi1tsEfa2yKYydyotZJlaFLwP-7E0RqDTR9NPx_FcW-n0ynVhPbDwtg/exec'; 
+        // ⭐⭐ 여기에 Step 3에서 새로 복사한 "/exec"로 끝나는 Apps Script URL을 정확히 붙여넣으세요! ⭐⭐
+        const GOOGLE_APPS_SCRIPT_URL = 'YOUR_NEW_APPS_SCRIPT_WEB_APP_URL_ENDING_WITH_SLASH_EXEC'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -67,19 +68,24 @@
                 const resultText = await response.text(); 
 
                 if (resultText === 'Success') { 
-                    messageDiv.textContent = 'Successfully subscribed! Thank you.';
+                    messageDiv.textContent = 'Successfully subscribed! Thank you!'; // 성공 메시지 추가
                     messageDiv.style.color = '#aaffaa';
                     emailInput.value = ''; 
                 } else {
-                    messageDiv.textContent = 'Failed to send email. Please try again. (' + resultText + ')'; 
+                    // Apps Script에서 "Error: [메시지]" 형태의 문자열을 반환할 경우
+                    messageDiv.textContent = 'Subscription failed. Please try again. (' + resultText + ')'; // 실패 메시지 변경
                     messageDiv.style.color = '#ffaaaa';
                 }
             } catch (error) {
                 console.error('Error during form submission:', error);
-                // ⭐⭐ 이 줄을 주석 처리하거나 제거하여 네트워크 오류 메시지를 표시하지 않습니다. ⭐⭐
-                // messageDiv.textContent = 'Network error occurred. Please check your internet connection.';
-                // messageDiv.style.color = '#ffaaaa';
+                messageDiv.textContent = 'Network error. Please check your connection.'; // 네트워크 오류 메시지 간략화
+                messageDiv.style.color = '#ffaaaa';
             }
+             // ⭐ 메시지가 너무 빨리 사라지는 것을 방지하려면 이 주석을 해제하세요.
+             setTimeout(() => {
+                 messageDiv.textContent = '';
+                 messageDiv.style.color = '';
+             }, 5000); // 5초 후에 메시지 사라짐
         });
     </script>
 </body>
