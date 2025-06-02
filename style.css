@@ -1,32 +1,31 @@
 /* style.css 파일 전체 내용입니다. 기존 내용은 모두 지우고 이걸 붙여넣으세요. */
 
 /* ------------------------------------- */
-/* 0. 구글 폰트 가져오기 (세련된 Pretendard 폰트) */
+/* 0. 구글 폰트 가져오기 (세련된 'Inter' 폰트 - 영어에 최적화) */
 /* ------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
-/* 'Pretendard' 폰트를 사용합니다. (매우 세련되고 가독성이 좋은 한국어 웹폰트) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* 'Inter' 폰트를 사용합니다. (모던하고 고급스러운 영어 웹폰트로 매우 유명) */
 
 
 /* ------------------------------------- */
 /* 1. 전체 페이지 기본 스타일 */
 /* ------------------------------------- */
 body {
-    font-family: 'Pretendard', 'Arial', sans-serif; /* 기본 글꼴 설정 */
+    font-family: 'Inter', sans-serif; /* ⭐⭐ 영어에 어울리는 고급진 'Inter' 폰트 적용 ⭐⭐ */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* 수직 중앙 정렬 유지 */
+    display: flex; /* flexbox 레이아웃 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
     min-height: 100vh; /* 화면 전체 높이 유지 */
-    background-color: #1a1a2e; /* 기본 배경색 (어두운 계열 유지) */
-    color: #e0e0e0; /* 기본 글자색 (밝은 계열 유지) */
+    background-color: #1a1a2e;
+    color: #e0e0e0;
     line-height: 1.6;
     overflow-x: hidden;
     box-sizing: border-box;
     position: relative;
 }
 
-/* ⭐⭐⭐ 배경 오버레이에 블러 효과 + 그라디언트 추가 ⭐⭐⭐ */
+/* ⭐⭐⭐ 배경 이미지 존재감 강화 (밝기, 오버레이 조절) ⭐⭐⭐ */
 body::before {
     content: "";
     position: absolute;
@@ -50,18 +49,88 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    /* ⭐⭐ 어둡기만 하지 않고 깊이감을 주는 은은한 그라디언트 오버레이 ⭐⭐ */
-    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.1) 0%, rgba(20, 20, 60, 0.3) 100%); 
+    /* ⭐⭐ 배경 오버레이에 블러효과 + 그라디언트 추가 ⭐⭐ */
+    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%); 
     z-index: -1;
 }
 
 /* ------------------------------------- */
-/* 2. 히어로 섹션 (메인 콘텐츠 카드 영역) 스타일 */
+/* 2. 헤더 (상단 메뉴) 스타일 ⭐⭐⭐ 새로 추가된 부분 ⭐⭐⭐ */
+/* ------------------------------------- */
+.main-header {
+    width: 100%;
+    padding: 15px 0; /* 위아래 패딩 */
+    background-color: rgba(0, 0, 0, 0.2); /* 반투명 배경 */
+    backdrop-filter: blur(10px); /* 블러 효과 */
+    position: fixed; /* 상단 고정 */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 다른 요소 위에 오도록 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 그림자 */
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; /* 양쪽 패딩 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 800; /* Inter 폰트 굵기 */
+    color: white;
+    text-decoration: none;
+    letter-spacing: -0.03em;
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: white;
+}
+
+.user-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* 원형 */
+    background-color: #FFC107; /* 주황색 (Gemini 사이트 참고) */
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------- */
+/* 3. 메인 콘텐츠 래퍼 (헤더에 의해 밀리도록) */
+/* ------------------------------------- */
+.content-wrapper {
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* ⭐⭐ hero-section을 수직 중앙 정렬 ⭐⭐ */
+    padding-top: 80px; /* ⭐⭐ 고정 헤더 높이만큼 콘텐츠 밀어내기 ⭐⭐ */
+    /* 필요에 따라 헤더 높이에 맞게 조정 */
+}
+
+
+/* ------------------------------------- */
+/* 4. 히어로 섹션 (메인 콘텐츠 카드 영역) 스타일 */
 /* ------------------------------------- */
 .hero-section {
     width: 90%;
     max-width: 900px;
-    padding: 70px 50px; /* ⭐⭐ padding/spacing 더 넓고 부드럽게 ⭐⭐ */
+    padding: 40px 50px; /* ⭐⭐ 위 아래 여백 아주 약간 (손가락 한 마디 정도) ⭐⭐ */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,16 +140,16 @@ body::after {
     position: relative;
     z-index: 1;
 
-    /* ⭐⭐⭐ 유리 느낌 효과 (더욱 자연스럽게) ⭐⭐⭐ */
-    background-color: rgba(255, 255, 255, 0.08); /* 카드 배경 투명도 유지 */
-    backdrop-filter: blur(8px); /* ⭐⭐ 블러 강도 살짝 낮춰서 더 자연스러운 프로스트 효과 ⭐⭐ */
+    /* 유리 느낌 효과 (더욱 자연스럽게) */
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
     border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); /* ⭐⭐ 그림자 강도 약간 높여 깊이감 추가 ⭐⭐ */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* 테두리 투명도 유지 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* ------------------------------------- */
-/* 3. 히어로 섹션 내부 콘텐츠 스타일 (텍스트) */
+/* 5. 히어로 섹션 내부 콘텐츠 스타일 (텍스트) */
 /* ------------------------------------- */
 .hero-content {
     max-width: 700px;
@@ -90,8 +159,8 @@ body::after {
 
 .hero-content h1 {
     font-size: 3.5em;
-    font-weight: 800;
-    margin-bottom: 40px; /* ⭐⭐ 제목 아래 여백 조정 (더 여유롭게) ⭐⭐ */
+    font-weight: 800; /* Inter 폰트 굵기 */
+    margin-bottom: 20px; /* ⭐⭐ 제목 아래 여백 아주 약간 ⭐⭐ */
     letter-spacing: -0.04em;
     line-height: 1.2;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -100,16 +169,143 @@ body::after {
 .hero-content p {
     font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 60px; /* ⭐⭐ 부제목 아래 여백 조정 (더 여유롭게) ⭐⭐ */
+    margin-bottom: 30px; /* ⭐⭐ 부제목 아래 여백 아주 약간 ⭐⭐ */
     opacity: 0.95;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------------------------- */
-/* 4. 폼 스타일 */
+/* 6. 폼 스타일 */
 /* ------------------------------------- */
 #email-form {
     background: none;
     padding: 0;
     max-width: 600px;
-    width:
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    border: none;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px; /* 입력칸과 버튼 사이 간격 유지 */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ⭐⭐⭐ 입력창 유리 느낌 효과 ⭐⭐⭐ */
+#email-form input[type="email"] {
+    flex-grow: 1;
+    padding: 16px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 1.05em;
+    min-width: 260px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.15); /* ⭐⭐ 투명한 밝은 배경으로 유리 느낌 강화 ⭐⭐ */
+    backdrop-filter: blur(5px); /* ⭐⭐ 입력창에 미세한 블러 효과 추가 ⭐⭐ */
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#email-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#email-form input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2); /* ⭐⭐ 포커스 시 배경색 살짝 진하게 ⭐⭐ */
+}
+
+/* ⭐⭐⭐ 버튼의 그라디언트 및 호버 애니메이션 ⭐⭐⭐ */
+#email-form button {
+    background-image: linear-gradient(to bottom right, #ffffff 0%, #f0f0f0 100%); /* ⭐⭐ 약간 더 눈에 띄는 그라데이션 ⭐⭐ */
+    color: #333;
+    padding: 16px 35px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+#email-form button:hover {
+    background-image: linear-gradient(to bottom right, #e8e8e8 0%, #d8d8d8 100%); /* ⭐⭐ 호버 시 그라데이션 변화 ⭐⭐ */
+    transform: translateY(-3px) scale(1.01); /* ⭐⭐ 호버 시 위로 이동 + 살짝 커지는 애니메이션 ⭐⭐ */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* ⭐⭐ 호버 시 그림자 강조 ⭐⭐ */
+}
+
+/* ------------------------------------- */
+/* 7. 메시지 영역 스타일 */
+/* ------------------------------------- */
+#message {
+    margin-top: 30px;
+    font-size: 1.4em;
+    text-align: center;
+    color: #aaffaa;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------------------------- */
+/* 8. 모바일 반응형 (화면이 작아질 때) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 10px 0; /* 모바일 헤더 패딩 줄임 */
+    }
+    .header-container {
+        padding: 0 20px; /* 모바일 헤더 양쪽 패딩 */
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .main-nav {
+        display: none; /* 모바일에서 네비게이션 숨김 */
+    }
+    .user-profile {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    .content-wrapper {
+        padding-top: 60px; /* 모바일 헤더 높이에 맞게 콘텐츠 밀어내기 */
+    }
+    .hero-section {
+        width: 95%;
+        padding: 30px 25px; /* 모바일 padding 조정 */
+    }
+    .hero-content h1 {
+        font-size: 2.2em;
+        margin-bottom: 15px; /* 모바일 여백 조정 */
+    }
+    .hero-content p {
+        font-size: 1em;
+        margin-bottom: 25px; /* 모바일 여백 조정 */
+    }
+    #email-form {
+        max-width: 100%;
+    }
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #email-form input,
+    #email-form button {
+        padding: 14px 20px;
+        font-size: 0.95em;
+        min-width: unset;
+        width: 100%;
+    }
+    #message {
+        font-size: 1em;
+    }
+}
