@@ -37,10 +37,11 @@
     </main>
 
     <script>
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBSJ6xfs3m3XzoS0m11bbYq0GZcVNNceAeQraFa5Q5sAPmbvzR16edR0In-YbR1SPclw/exec'; 
+        // ⭐⭐ 새로운 Google Apps Script URL이 적용되었습니다! ⭐⭐
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9E89e7FR98z4oi1tsEfa2yKYydyotZJlaFLwP-7E0RqDTR6NP_FcW-n0ynVhPbDwtg/exec'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+            event.preventDefault(); // 페이지 새로고침 방지
 
             const emailInput = this.querySelector('input[type="email"]');
             const messageDiv = document.getElementById('message');
@@ -48,7 +49,7 @@
 
             // 이전 메시지 초기화
             messageDiv.textContent = ''; 
-            messageDiv.style.color = ''; // 색상도 초기화
+            messageDiv.style.color = ''; 
 
             if (!email) {
                 messageDiv.textContent = 'Please enter a valid email address.';
@@ -62,9 +63,10 @@
             try {
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: new FormData(this) // 폼 전체를 FormData로 보냅니다.
+                    body: new FormData(this) 
                 });
 
+                // Apps Script가 TEXT 응답을 반환하므로 .text()를 사용합니다.
                 const resultText = await response.text(); 
 
                 if (resultText === 'Success') { 
@@ -72,6 +74,7 @@
                     messageDiv.style.color = '#aaffaa';
                     emailInput.value = ''; // 성공 시 입력창 비우기
                 } else {
+                    // Apps Script에서 "Error: [메시지]" 형태의 문자열을 반환할 경우
                     messageDiv.textContent = 'Failed to send email. Please try again. (' + resultText + ')'; 
                     messageDiv.style.color = '#ffaaaa';
                 }
@@ -81,11 +84,11 @@
                 messageDiv.style.color = '#ffaaaa';
             }
             
-            // ⭐⭐⭐ 메시지가 표시된 후 3초 뒤에 사라지도록 추가 (선택 사항) ⭐⭐⭐
+            // ⭐ 참고: 메시지가 너무 빨리 사라지는 것을 방지하려면 이 주석을 해제하세요.
             // setTimeout(() => {
             //     messageDiv.textContent = '';
             //     messageDiv.style.color = '';
-            // }, 3000);
+            // }, 5000); // 5초 후에 메시지 사라짐
         });
     </script>
 </body>
