@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Awesome Landing Page</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="main-header">
@@ -27,8 +27,7 @@
 
                 <form id="email-form">
                     <div class="input-group">
-                        <input type="email" placeholder="Enter your email address" required>
-                        <button type="submit">Join</button>
+                        <input type="email" placeholder="Enter your email address" required name="email"> <button type="submit">Join</button>
                     </div>
                 </form>
                 <div id="message"></div>
@@ -37,18 +36,51 @@
     </main>
 
     <script>
-        document.getElementById('email-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const emailInput = this.querySelector('input\[type="email"]');
-            const messageDiv = document.getElementById('message');
+        // ⭐⭐⭐ Google Apps Script URL 여기에 정확히 넣어주세요 ⭐⭐⭐
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_tmRuKpLr5QK0mVbx2ZDhljdzUraI-M4PRGjEN3-je-omUuFnMeOLV2dJCYR3uPNnAA/exec';
 
-            if (emailInput.value) {
-                messageDiv.textContent = 'Thank you for subscribing!';
-                messageDiv.style.color = '#aaffaa'; // Greenish success color
-                emailInput.value = ''; // Clear the input
-            } else {
-                messageDiv.textContent = 'Please enter a valid email address.';
-                messageDiv.style.color = '#ffaaaa'; // Reddish error color
+        document.getElementById('email-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // 페이지 새로고침 방지
+
+            const emailInput = this.querySelector('input[type="email"]');
+            const messageDiv = document.getElementById('message');
+            const email = emailInput.value.trim(); // 이메일 값 가져오기 및 공백 제거
+
+            if (!email) { // 기본적인 클라이언트 측 유효성 검사 (이메일이 비어있으면)
+                messageDiv.textContent = '유효한 이메일 주소를 입력해주세요.';
+                messageDiv.style.color = '#ffaaaa'; // 빨간색 에러 메시지
+                return; // 함수 실행 중단
+            }
+
+            messageDiv.textContent = '이메일 전송 중...'; // 전송 중 메시지
+            messageDiv.style.color = '#cccccc'; // 회색 메시지
+
+            try {
+                // FormData 객체 생성: 폼 데이터를 서버로 보내기 위해 사용
+                const formData = new FormData();
+                formData.append('email', email); // 'email' 키로 이메일 값을 추가 (Apps Script에서 e.parameter.email로 받을 수 있음)
+
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST', // POST 방식으로 데이터 전송
+                    body: formData // FormData 객체를 body에 담아 보냄
+                });
+
+                // Google Apps Script가 JSON 형식의 응답을 반환한다고 가정
+                const result = await response.json(); 
+
+                if (result.status === 'success') { // Apps Script에서 {status: 'success'}를 반환했을 경우
+                    messageDiv.textContent = '성공적으로 구독되었습니다! 감사합니다.'; // 성공 메시지
+                    messageDiv.style.color = '#aaffaa'; // 초록색 메시지
+                    emailInput.value = ''; // 성공 시 입력창 비우기
+                } else {
+                    // Apps Script에서 오류 메시지를 보냈을 경우 그 메시지를 사용, 아니면 일반적인 에러 메시지
+                    messageDiv.textContent = result.message || '이메일 전송에 실패했습니다. 다시 시도해주세요.';
+                    messageDiv.style.color = '#ffaaaa'; // 빨간색 에러 메시지
+                }
+            } catch (error) {
+                console.error('폼 전송 중 오류 발생:', error);
+                messageDiv.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'; // 네트워크 오류 시
+                messageDiv.style.color = '#ffaaaa'; // 빨간색 에러 메시지
             }
         });
     </script>
