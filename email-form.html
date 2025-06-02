@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>이메일 입력 폼</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f4f4f4; }
+    form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; }
+    input[type="email"] { padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; width: 300px; }
+    button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; }
+    button:hover { background-color: #0056b3; }
+    #message { margin-top: 20px; font-size: 18px; text-align: center; color: #333; }
+  </style>
+</head>
+<body>
+  <form id="email-form">
+    <input type="email" name="email" placeholder="이메일 입력" required />
+    <button type="submit">제출</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    const form = document.getElementById('email-form');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      // 여기에 본인의 Google Apps Script 웹 앱 URL을 붙여넣으세요!
+      fetch('https://script.google.com/macros/s/AKfycbwcXzK2JX8DAT1Zssv7W9WgLnbnRITKsutv0gPnJyLwEV2EPmPQ13PqnqScxZYUk1T_mg/exec', { 
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) { // HTTP 상태 코드가 200번대가 아니면 오류 처리
+          throw new Error('네트워크 응답이 실패했습니다.');
+        }
+        return response.text(); // 텍스트 응답을 처리 (Apps Script가 "Success"를 반환하므로)
+      })
+      .then(data => {
+        console.log("Apps Script 응답:", data); // 응답 확인용
+        message.textContent = "이메일이 저장되었습니다!";
+        form.reset();
+      })
+      .catch((error) => {
+        message.textContent = "오류 발생: " + error;
+        console.error("에러:", error);
+      });
+    });
+  </script>
+</body>
+</html>
