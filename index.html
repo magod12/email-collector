@@ -37,7 +37,8 @@
     </main>
 
     <script>
-        // ⭐⭐ 새로운 Google Apps Script URL이 여기에 반영되었습니다! ⭐⭐
+        // ⭐⭐⭐ 중요: 여기에 당신의 Google Apps Script 웹 앱 URL을 정확히 붙여넣으세요! ⭐⭐⭐
+        // 예시: 'https://script.google.com/macros/s/AKfycbxxxxxxxxx/exec';
         const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMN6j6Dyy1vwsEbkG0cSYcc1c9K8a09Hhq1VmK8nDDpKUG_Y22vKckFp4j53NEIXc2wg/exec'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
@@ -47,47 +48,53 @@
             const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
-            // 이전 메시지 초기화
+            // 메시지 초기화
             messageDiv.textContent = ''; 
             messageDiv.style.color = ''; 
 
             if (!email) {
+                // 이메일이 비어있으면 메시지 출력 (입력창은 비우지 않음)
                 messageDiv.textContent = 'Please enter a valid email address.';
                 messageDiv.style.color = '#ffaaaa';
                 return;
             }
 
-            messageDiv.textContent = 'Sending your email...'; // "Sending email..."에서 변경
+            // 제출 중 메시지 표시
+            messageDiv.textContent = 'Sending your email...'; 
             messageDiv.style.color = '#cccccc';
 
             try {
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: new FormData(this) 
+                    body: new FormData(this) // HTML 폼 데이터를 직접 전송
                 });
 
-                const resultText = await response.text(); 
+                const resultText = await response.text(); // 응답 본문을 텍스트로 받음
 
+                // Apps Script에서 "Success" 문자열을 받았는지 확인
                 if (resultText === 'Success') { 
-                    messageDiv.textContent = 'Thank you! Your email has been successfully saved.'; // 성공 메시지
+                    messageDiv.textContent = 'Thank you! Your email has been successfully saved.'; // 성공 메시지 고정
                     messageDiv.style.color = '#aaffaa';
-                    emailInput.value = ''; // 성공 시 입력창 비우기
                 } else {
-                    // Apps Script에서 "Error: [메시지]" 형태의 문자열을 반환할 경우
-                    messageDiv.textContent = 'Subscription failed. Please try again. (Server responded: ' + resultText + ')'; // 실패 메시지에 서버 응답 포함
+                    // "Success"가 아니면 무조건 실패 메시지 출력
+                    messageDiv.textContent = 'Subscription failed. Please try again.'; 
                     messageDiv.style.color = '#ffaaaa';
                 }
             } catch (error) {
+                // 네트워크 연결 오류 등 Fetch API 자체의 오류 발생 시
                 console.error('Error during form submission:', error);
-                messageDiv.textContent = 'Network error: Could not connect to the server.'; // 네트워크 오류 메시지
+                messageDiv.textContent = 'Network error: Could not connect to the server.'; 
                 messageDiv.style.color = '#ffaaaa';
+            } finally {
+                // ⭐⭐⭐ 무조건 입력창 비우기 (성공/실패/네트워크 오류와 관계없이) ⭐⭐⭐
+                emailInput.value = ''; 
+
+                // 메시지가 5초 후에 사라지도록 설정
+                setTimeout(() => {
+                    messageDiv.textContent = '';
+                    messageDiv.style.color = '';
+                }, 5000); 
             }
-            
-            // 메시지가 너무 빨리 사라지는 것을 방지하기 위해 5초 후에 사라지도록 설정
-            setTimeout(() => {
-                messageDiv.textContent = '';
-                messageDiv.style.color = '';
-            }, 5000); // 5초 후에 메시지 사라짐
         });
     </script>
 </body>
