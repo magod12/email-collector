@@ -10,8 +10,10 @@
 <body>
     <header class="main-header">
         <div class="header-container">
-            <div class="brand-group"> <div class="brand-icon">M</div> <a href="#" class="logo">YourBrand</a> 
-            </div>
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">M</div>
+                YourBrand
+            </a>
             <nav class="main-nav">
                 </nav>
         </div>
@@ -22,7 +24,7 @@
             <div class="hero-content">
                 <h1>Unlock Your Digital Potential.</h1>
                 <p>Subscribe to our newsletter for exclusive updates, special offers, and much more.</p>
-                
+
                 <form id="email-form">
                     <div class="input-group">
                         <input type="email" placeholder="Enter your email address" required>
@@ -37,9 +39,9 @@
     <script>
         document.getElementById('email-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
+            const emailInput = this.querySelector('input\[type="email"]');
             const messageDiv = document.getElementById('message');
-            
+
             if (emailInput.value) {
                 messageDiv.textContent = 'Thank you for subscribing!';
                 messageDiv.style.color = '#aaffaa'; // Greenish success color
