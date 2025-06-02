@@ -31,7 +31,8 @@
                         <button type="submit">Join</button>
                     </div>
                 </form>
-                </div>
+                <div id="message"></div> 
+            </div>
         </section>
     </main>
 
@@ -44,7 +45,12 @@
             event.preventDefault(); // 페이지 새로고침 방지
 
             const emailInput = this.querySelector('input[type="email"]');
+            const messageDiv = document.getElementById('message'); // messageDiv를 다시 가져옵니다.
             const email = emailInput.value.trim();
+
+            // 메시지 초기화
+            messageDiv.textContent = ''; 
+            messageDiv.style.color = ''; 
 
             if (!email) {
                 // 이메일이 비어있으면 아무것도 하지 않고 함수 종료 (오류 메시지 없음)
@@ -52,19 +58,30 @@
             }
 
             try {
-                // 요청 전송 (응답은 무시)
+                // 요청 전송 (응답은 무시하거나, Apps Script에서 'Success'가 오든 'Error'가 오든 무조건 Thank you를 표시)
                 await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     body: new FormData(this) 
                 });
 
+                // 성공 여부와 관계없이 무조건 "Thank you!" 메시지 출력
+                messageDiv.textContent = 'Thank you!'; 
+                messageDiv.style.color = '#aaffaa'; // 녹색 계열
+
             } catch (error) {
-                // 네트워크 오류 등이 발생해도 사용자에게 메시지를 보여주지 않음.
-                // 개발자 콘솔에만 오류를 기록.
+                // 네트워크 오류 등이 발생해도 사용자에게는 "Thank you!" 메시지를 보여줍니다.
                 console.error('Error during form submission:', error);
+                messageDiv.textContent = 'Thank you!'; 
+                messageDiv.style.color = '#aaffaa'; // 녹색 계열
             } finally {
                 // ⭐⭐⭐ 성공/실패/오류와 관계없이 무조건 입력창 비우기 ⭐⭐⭐
                 emailInput.value = ''; 
+
+                // 메시지가 5초 후에 사라지도록 설정
+                setTimeout(() => {
+                    messageDiv.textContent = '';
+                    messageDiv.style.color = '';
+                }, 5000); 
             }
         });
     </script>
