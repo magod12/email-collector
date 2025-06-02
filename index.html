@@ -37,12 +37,13 @@
     </main>
 
     <script>
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw_tmRuKpLr5QK0mVbx2ZDhljdzUraI-M4PRGjEN3-je-omUuFnMeOLV2dJCYR3uPNnAA/exec';
+        // ⭐⭐⭐ 새로운 Google Apps Script URL로 업데이트되었습니다! ⭐⭐⭐
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQT8cfdT_v-s4y-7IdKHOJJEgqb0imZLkMwETYprl4oBr9ls7fv2ewHbA_ShoxtZrd5Q/exec';
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent page reload
 
-            const emailInput = this.querySelector('input[type="email"]'); // 정확한 input 타입 선택
+            const emailInput = this.querySelector('input[type="email"]');
             const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
@@ -52,7 +53,7 @@
                 return;
             }
 
-            messageDiv.textContent = 'Sending email...';
+            messageDiv.textContent = 'Sending email...'; // Message for "in progress"
             messageDiv.style.color = '#cccccc';
 
             try {
@@ -64,15 +65,15 @@
                     body: formData
                 });
 
-                // ⭐⭐⭐ 변경된 부분: Apps Script가 TEXT 응답을 반환하므로 .text()를 사용합니다. ⭐⭐⭐
+                // Expecting a plain text response from Apps Script ("Success" or "Error:...")
                 const resultText = await response.text(); 
 
-                if (resultText === 'Success') { // Apps Script가 "Success" 문자열을 반환했을 경우
+                if (resultText === 'Success') { 
                     messageDiv.textContent = 'Successfully subscribed! Thank you.';
                     messageDiv.style.color = '#aaffaa';
-                    emailInput.value = '';
+                    emailInput.value = ''; // Clear input on success
                 } else {
-                    // Apps Script에서 "Error: [메시지]" 형태의 문자열을 반환할 경우
+                    // Display specific error from Apps Script or a generic one
                     messageDiv.textContent = 'Failed to send email. Please try again. (' + resultText + ')'; 
                     messageDiv.style.color = '#ffaaaa';
                 }
