@@ -33,7 +33,7 @@ body::before {
     width: 100%;
     height: 100%;
     /* ⭐⭐⭐ 여기에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
-    background-image: url('alpine-7703065_1920.jpg'); 
+    background-image: url('alpine-7703065_1920.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(8px) brightness(0.95);
@@ -48,7 +48,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%); 
+    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%);
     z-index: -1;
 }
 
@@ -85,28 +85,29 @@ body::after {
     color: white; /* 로고 텍스트 색상 */
 }
 
-/* ⭐⭐⭐ logo-icon 스타일: M 박스 크기 및 텍스트 선명도 복원 ⭐⭐⭐ */
+/* ⭐⭐⭐ logo-icon 스타일: M 박스 약간 왼쪽으로 이동 ⭐⭐⭐ */
 .logo-icon {
-    width: 40px; /* ⭐⭐ 아이콘 너비 복원 ⭐⭐ */
-    height: 40px; /* ⭐⭐ 아이콘 높이 복원 ⭐⭐ */
+    width: 40px;
+    height: 40px;
     background-color: #FFD700; /* 황금색 노란색 */
-    color: #333; /* ⭐⭐ M 글자색을 어둡게 하여 선명도 높임 ⭐⭐ */
-    font-size: 1.5em; /* ⭐⭐ M 글자 크기 복원 ⭐⭐ */
+    color: #333;
+    font-size: 1.5em;
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px; /* 둥근 사각형 모양 유지 */
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-right: -5px; /* ⭐⭐ M을 오른쪽으로 살짝 당겨 YourBrand와 더 가깝게 ⭐⭐ */
 }
 
-/* ⭐⭐⭐ logo 텍스트 스타일: 글자 크기 복원 ⭐⭐⭐ */
-.logo { /* .brand-logo 안에 있는 a 태그 */
-    font-size: 1.8em; /* ⭐⭐ 로고 텍스트 크기 복원 ⭐⭐ */
-    font-weight: 800;
-    color: white; /* 텍스트 색상 */
-    text-decoration: none; /* 링크 밑줄 제거 */
-    letter-spacing: -0.03em;
+/* ⭐⭐⭐ logo 텍스트 스타일: 글자 굵게 및 더욱 강렬하게 ⭐⭐⭐ */
+.brand-logo .logo { /* .brand-logo 안에 있는 a 태그 */
+    font-size: 1.9em; /* 약간 더 크게 */
+    font-weight: 700; /* ⭐⭐ 글자를 더욱 굵게 ⭐⭐ */
+    color: white;
+    text-decoration: none;
+    letter-spacing: -0.04em; /* 글자 간 간격 살짝 조정 */
 }
 
 .main-nav a {
@@ -203,13 +204,13 @@ body::after {
     justify-content: center;
 }
 
-/* ⭐⭐⭐ 입력창 유리 느낌 효과 및 크기 복원 ⭐⭐⭐ */
-#email-form input[type="email"] {
+/* 입력창 유리 느낌 효과 및 크기 유지 */
+#email-form input\[type="email"] {
     flex-grow: 1;
-    padding: 18px 25px; /* ⭐⭐ 입력창 패딩 복원 (더 높게) ⭐⭐ */
+    padding: 18px 25px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    font-size: 1.1em; /* ⭐⭐ 입력창 글자 크기 복원 ⭐⭐ */
+    font-size: 1.1em;
     min-width: 260px;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.15);
@@ -218,25 +219,25 @@ body::after {
     transition: all 0.3s ease;
 }
 
-#email-form input[type="email"]::placeholder {
+#email-form input\[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-#email-form input[type="email"]:focus {
+#email-form input\[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ⭐⭐⭐ 버튼의 크기 복원 및 고급화 ⭐⭐⭐ */
+/* 버튼 스타일 유지 */
 #email-form button {
     background-image: linear-gradient(to bottom right, #ffffff 0%, #f0f0f0 100%);
     color: #333;
-    padding: 18px 35px; /* ⭐⭐ 버튼 패딩 복원 (더 높게) ⭐⭐ */
+    padding: 18px 35px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 1.1em; /* ⭐⭐ 버튼 글자 크기 복원 ⭐⭐ */
+    font-size: 1.1em;
     font-weight: 600;
     transition: all 0.3s ease;
     letter-spacing: 0.05em;
@@ -273,13 +274,14 @@ body::after {
         padding: 0 20px;
     }
     .logo-icon {
-        width: 35px; /* 모바일 아이콘 크기 조정 */
+        width: 35px;
         height: 35px;
         font-size: 1.2em;
         border-radius: 6px;
+        margin-right: -4px; /* 모바일에서도 살짝 당겨줌 */
     }
-    .brand-logo .logo { /* 모바일에서 로고 텍스트 크기 */
-        font-size: 1.5em;
+    .brand-logo .logo {
+        font-size: 1.6em; /* 모바일에서 로고 텍스트 약간 더 크게 */
     }
     .main-nav {
         display: none;
@@ -299,7 +301,7 @@ body::after {
         font-size: 1em;
         margin-bottom: 25px;
     }
-    #email-form input[type="email"],
+    #email-form input\[type="email"],
     #email-form button {
         padding: 14px 20px;
         font-size: 0.95em;
