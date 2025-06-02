@@ -1,7 +1,7 @@
 /* style.css 파일 전체 내용입니다. 기존 내용은 모두 지우고 이걸 붙여넣으세요. */
 
 /* ------------------------------------- */
-/* 0. 구글 폰트 가져오기 (세련된 'Inter' 폰트 - 영어에 최적화) */
+/* 0. 구글 폰트 가져오기 (세련된 'Inter' 폰트) */
 /* ------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -10,7 +10,7 @@
 /* 1. 전체 페이지 기본 스타일 */
 /* ------------------------------------- */
 body {
-    font-family: 'Inter', sans-serif; /* 영어에 어울리는 고급진 'Inter' 폰트 적용 */
+    font-family: 'Inter', sans-serif; /* 모던하고 고급스러운 폰트 적용 */
     margin: 0;
     padding: 0;
     display: flex;
@@ -67,10 +67,11 @@ body::after {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* ⭐⭐⭐ 헤더 컨테이너: 왼쪽 여백 "손톱만큼"만 남김 ⭐⭐⭐ */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 15px; /* ⭐⭐ 양쪽 패딩을 15px로 줄여 왼쪽으로 더 붙임 ⭐⭐ */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,16 +81,16 @@ body::after {
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 10px; /* 아이콘과 텍스트 사이 간격 */
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: white; /* 로고 텍스트 색상 */
+    /* gap: 10px; */ /* 이제 gap 대신 logo-icon에 margin-right를 직접 줄 것입니다. */
+    text-decoration: none;
+    color: white;
 }
 
-/* ⭐⭐⭐ logo-icon 스타일: M 박스 약간 왼쪽으로 이동 ⭐⭐⭐ */
+/* ⭐⭐⭐ logo-icon 스타일: M 박스 M과 글자 사이 간격 조정 ⭐⭐⭐ */
 .logo-icon {
     width: 40px;
     height: 40px;
-    background-color: #FFD700; /* 황금색 노란색 */
+    background-color: #FFD700;
     color: #333;
     font-size: 1.5em;
     font-weight: 700;
@@ -98,16 +99,17 @@ body::after {
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-right: -5px; /* ⭐⭐ M을 오른쪽으로 살짝 당겨 YourBrand와 더 가깝게 ⭐⭐ */
+    margin-right: 5px; /* ⭐⭐ M 아이콘과 YourBrand 텍스트 사이에 5px 간격 부여 ⭐⭐ */
 }
 
-/* ⭐⭐⭐ logo 텍스트 스타일: 글자 굵게 및 더욱 강렬하게 ⭐⭐⭐ */
-.brand-logo .logo { /* .brand-logo 안에 있는 a 태그 */
-    font-size: 1.9em; /* 약간 더 크게 */
-    font-weight: 700; /* ⭐⭐ 글자를 더욱 굵게 ⭐⭐ */
+/* ⭐⭐⭐ YourBrand 텍스트 스타일: 굵고 멋지게! ⭐⭐⭐ */
+.brand-logo .logo {
+    font-size: 2.0em; /* ⭐⭐ 글자 크기를 더 크게 ⭐⭐ */
+    font-weight: 900; /* ⭐⭐ 폰트 굵기를 최대로 (Inter 폰트의 가장 굵은 웨이트) ⭐⭐ */
     color: white;
     text-decoration: none;
-    letter-spacing: -0.04em; /* 글자 간 간격 살짝 조정 */
+    letter-spacing: -0.05em; /* 글자 간격 더 좁게 하여 꽉 찬 느낌 */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); /* ⭐⭐ 미세한 그림자 추가로 입체감과 '있어보이는' 느낌 부여 ⭐⭐ */
 }
 
 .main-nav a {
@@ -139,7 +141,7 @@ body::after {
 .hero-section {
     width: 90%;
     max-width: 900px;
-    padding: 40px 50px; /* 위 아래 여백 아주 약간 (손가락 한 마디 정도) 유지 */
+    padding: 40px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,7 +170,7 @@ body::after {
 .hero-content h1 {
     font-size: 3.5em;
     font-weight: 800;
-    margin-bottom: 20px; /* 제목 아래 여백 아주 약간 유지 */
+    margin-bottom: 20px;
     letter-spacing: -0.04em;
     line-height: 1.2;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -177,7 +179,7 @@ body::after {
 .hero-content p {
     font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 30px; /* 부제목 아래 여백 아주 약간 유지 */
+    margin-bottom: 30px;
     opacity: 0.95;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -204,40 +206,42 @@ body::after {
     justify-content: center;
 }
 
-/* 입력창 유리 느낌 효과 및 크기 유지 */
-#email-form input\[type="email"] {
+/* ⭐⭐⭐ 입력창 크기 및 폰트 복원 및 강화 ⭐⭐⭐ */
+#email-form input[type="email"] {
     flex-grow: 1;
-    padding: 18px 25px;
+    padding: 18px 25px; /* 충분한 패딩 */
+    height: 58px; /* ⭐⭐ 명시적으로 높이 지정하여 일관성 유지 ⭐⭐ */
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    font-size: 1.1em;
+    font-size: 1.2em; /* ⭐⭐ 글자 크기 더 키움 ⭐⭐ */
     min-width: 260px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* 패딩이 전체 크기에 포함되도록 */
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
     color: white;
     transition: all 0.3s ease;
 }
 
-#email-form input\[type="email"]::placeholder {
+#email-form input[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-#email-form input\[type="email"]:focus {
+#email-form input[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* 버튼 스타일 유지 */
+/* ⭐⭐⭐ 버튼 크기 및 폰트 복원 및 강화 ⭐⭐⭐ */
 #email-form button {
     background-image: linear-gradient(to bottom right, #ffffff 0%, #f0f0f0 100%);
     color: #333;
-    padding: 18px 35px;
+    padding: 18px 35px; /* 충분한 패딩 */
+    height: 58px; /* ⭐⭐ 명시적으로 높이 지정하여 일관성 유지 ⭐⭐ */
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1.2em; /* ⭐⭐ 글자 크기 더 키움 ⭐⭐ */
     font-weight: 600;
     transition: all 0.3s ease;
     letter-spacing: 0.05em;
@@ -271,17 +275,19 @@ body::after {
         padding: 10px 0;
     }
     .header-container {
-        padding: 0 20px;
+        padding: 0 10px; /* ⭐⭐ 모바일에서 헤더 왼쪽 여백 더 줄임 ⭐⭐ */
     }
     .logo-icon {
         width: 35px;
         height: 35px;
         font-size: 1.2em;
         border-radius: 6px;
-        margin-right: -4px; /* 모바일에서도 살짝 당겨줌 */
+        margin-right: 3px; /* 모바일에서도 M과 글자 사이 간격 조정 */
     }
     .brand-logo .logo {
-        font-size: 1.6em; /* 모바일에서 로고 텍스트 약간 더 크게 */
+        font-size: 1.6em; /* 모바일에서 로고 텍스트 크기 */
+        font-weight: 900;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     }
     .main-nav {
         display: none;
@@ -301,10 +307,11 @@ body::after {
         font-size: 1em;
         margin-bottom: 25px;
     }
-    #email-form input\[type="email"],
+    #email-form input[type="email"],
     #email-form button {
         padding: 14px 20px;
-        font-size: 0.95em;
+        height: 50px; /* 모바일에서 높이 조정 */
+        font-size: 1.0em;
         min-width: unset;
         width: 100%;
     }
