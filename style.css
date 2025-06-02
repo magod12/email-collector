@@ -49,11 +49,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* ⭐⭐⭐ 이 부분에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
+    /* ⭐⭐⭐ 여기에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
     background-image: url('alpine-7703065_1920.jpg'); 
     background-size: cover; /* 배경 이미지가 전체 영역을 덮도록 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
-    filter: blur(8px) brightness(0.6); /* 블러 효과와 어둡게 하는 효과 추가 */
+    filter: blur(5px) brightness(0.8); /* 블러 효과 강도 낮추고, 더 밝게! (0.8은 80% 밝기) */
     z-index: -1; /* 콘텐츠 뒤로 보내서 가려지지 않게 함 */
     transform: scale(1.05); /* 블러 효과로 인한 가장자리 잘림 방지 */
 }
@@ -66,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* 검은색 투명 오버레이 */
+    background-color: rgba(0, 0, 0, 0.2); /* 검은색 투명 오버레이 (더 연하게) */
     z-index: 0; /* 콘텐츠 아래, 블러 이미지 위에 위치 */
 }
 
@@ -74,7 +74,7 @@ body {
 /* 3. 히어로 섹션 내부 콘텐츠 스타일 (텍스트, 폼 감싸는 부분) */
 /* ------------------------------------- */
 .hero-content {
-    padding: 40px; /* 내부 여백 */
+    padding: 40px 20px; /* 위아래 패딩, 좌우 패딩 */
     max-width: 900px; /* 최대 너비 설정 */
     margin: 0 auto; /* 중앙 정렬 */
     z-index: 1; /* 블러 처리된 배경 위에 표시 */
@@ -82,17 +82,17 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 4em; /* 제목 글자 크기 더 크게 */
-    font-weight: 700; /* 글자 두껍게 (Pretendard 폰트의 wght 값) */
+    font-size: 4.2em; /* 제목 글자 크기 더 크게 */
+    font-weight: 700; /* 글자 두껍게 */
     margin-bottom: 20px; /* 아래 여백 */
-    letter-spacing: -0.03em; /* 글자 간격 조절 */
+    letter-spacing: -0.04em; /* 글자 간격 조절 */
     line-height: 1.1; /* 줄 높이 조절 */
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* 제목에 그림자 추가 */
 }
 
 .hero-content p {
-    font-size: 1.5em; /* 단락 글자 크기 더 크게 */
-    font-weight: 300; /* 글자 굵기 (Pretendard 폰트의 wght 값) */
+    font-size: 1.6em; /* 단락 글자 크기 더 크게 */
+    font-weight: 300; /* 글자 굵기 */
     margin-bottom: 50px; /* 아래 여백 늘림 */
     opacity: 0.9;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* 부제목에도 그림자 추가 */
@@ -103,24 +103,29 @@ body {
 /* ------------------------------------- */
 #email-form {
     background: rgba(255, 255, 255, 0.1); /* 더 투명하고 연한 흰색 배경 */
-    padding: 30px;
+    padding: 25px; /* 패딩 약간 줄임 */
     border-radius: 12px; /* 둥근 모서리 더 둥글게 */
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 그림자 더 부드럽고 크게 */
-    display: flex;
-    flex-direction: column; /* 세로로 배치 */
-    gap: 20px; /* 요소 간 간격 늘림 */
-    max-width: 500px; /* 폼의 최대 너비 */
-    margin: 20px auto; /* 중앙 정렬 및 위아래 여백 */
-    backdrop-filter: blur(5px); /* 배경을 흐릿하게 하는 효과 (유리 재질 느낌) */
+    max-width: 700px; /* 폼의 최대 너비 늘림 */
+    margin: 30px auto 0; /* 중앙 정렬 및 위 여백 늘림, 아래 여백 제거 */
+    backdrop-filter: blur(8px); /* 배경을 흐릿하게 하는 효과 (유리 재질 느낌, 더 강하게) */
     border: 1px solid rgba(255, 255, 255, 0.15); /* 얇고 연한 테두리 */
 }
 
+/* 입력칸과 버튼을 묶는 input-group 스타일 */
+.input-group {
+    display: flex; /* 가로로 나란히 배치 */
+    gap: 15px; /* 입력칸과 버튼 사이 간격 */
+    flex-wrap: wrap; /* 화면이 작아지면 자동으로 줄 바꿈 */
+}
+
 #email-form input[type="email"] {
-    padding: 18px; /* 패딩 늘림 */
+    flex-grow: 1; /* 남은 공간을 모두 차지하도록 */
+    padding: 18px; /* 패딩 */
     border: none; /* 테두리 제거 */
     border-radius: 8px; /* 둥근 모서리 */
     font-size: 1.1em;
-    width: 100%;
+    min-width: 250px; /* 최소 너비 설정 (너무 줄어들지 않게) */
     box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
     background-color: rgba(255, 255, 255, 0.95); /* 입력창 배경색 거의 흰색 */
     color: #333; /* 입력 텍스트 색상 */
@@ -137,70 +142,35 @@ body {
 }
 
 #email-form button {
-    background-color: #007bff; /* 버튼 배경색 파란색 */
+    /* 기존 파란색 #007bff 대신 더 모던한 색상으로 변경 */
+    background-color: #00bcd4; /* 청록색 계열 (예시 이미지와 비슷한 느낌) */
     color: #ffffff; /* 버튼 글자색 흰색 */
-    padding: 18px 25px; /* 패딩 늘림 */
+    padding: 18px 30px; /* 패딩 늘림 */
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1.2em; /* 글자 크기 약간 키움 */
-
-/* ------------------------------------- */
-/* 4. 폼 스타일 (기존 스타일 개선) */
-/* ------------------------------------- */
-#email-form {
-    background: rgba(255, 255, 255, 0.2); /* 배경 약간 투명한 흰색 */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* 그림자 진하게 */
-    display: flex;
-    flex-direction: column; /* 세로로 배치 */
-    gap: 15px;
-    max-width: 400px; /* 폼의 최대 너비 */
-    margin: 20px auto; /* 중앙 정렬 및 위아래 여백 */
-}
-
-#email-form input[type="email"] {
-    padding: 15px; /* 패딩 늘림 */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* 테두리색 변경 */
-    border-radius: 4px;
-    font-size: 1em;
-    width: 100%; /* 너비를 100%로 맞춰줌 */
-    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
-    background-color: rgba(255, 255, 255, 0.9); /* 입력창 배경색 약간 투명한 흰색 */
-    color: #333; /* 입력 텍스트 색상 */
-}
-
-#email-form input[type="email"]::placeholder {
-    color: #666; /* 플레이스홀더 텍스트 색상 */
-}
-
-#email-form button {
-    background-color: #ffc107; /* 버튼 배경색 노란색 계열 */
-    color: #333; /* 버튼 글자색 어둡게 */
-    padding: 15px 25px; /* 패딩 늘림 */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.1em; /* 글자 크기 약간 키움 */
-    font-weight: bold; /* 글자 두껍게 */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* 호버 효과 부드럽게 */
+    font-size: 1.2em;
+    font-weight: 600; /* 글자 두껍게 */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.05em; /* 글자 간격 추가 */
+    white-space: nowrap; /* 버튼 텍스트가 줄바꿈되지 않도록 */
 }
 
 #email-form button:hover {
-    background-color: #e0a800; /* 호버 시 색상 변경 */
-    transform: translateY(-2px); /* 호버 시 살짝 위로 올라가는 효과 */
+    background-color: #00a4bd; /* 호버 시 더 진한 청록색 */
+    transform: translateY(-3px); /* 호버 시 살짝 위로 올라가는 효과 */
 }
 
 /* ------------------------------------- */
 /* 5. 메시지 영역 스타일 */
 /* ------------------------------------- */
 #message {
-    margin-top: 20px;
-    font-size: 1.1em;
+    margin-top: 30px; /* 위 여백 늘림 */
+    font-size: 1.4em; /* 글자 크기 더 크게 */
     text-align: center;
-    color: white; /* 히어로 섹션 내 메시지 글자색 흰색 */
+    color: #aaffaa; /* 성공 메시지 색상 (밝은 녹색) */
     font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------------------------- */
@@ -208,12 +178,26 @@ body {
 /* ------------------------------------- */
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 2.2em; /* 모바일에서 제목 크기 줄임 */
+        font-size: 2.8em; /* 모바일에서 제목 크기 줄임 */
     }
     .hero-content p {
-        font-size: 1em; /* 모바일에서 단락 크기 줄임 */
+        font-size: 1.2em; /* 모바일에서 단락 크기 줄임 */
     }
     #email-form {
-        max-width: 90%; /* 모바일에서 폼 너비 늘림 */
+        max-width: 95%; /* 모바일에서 폼 너비 늘림 */
+        padding: 20px;
+    }
+    .input-group {
+        flex-direction: column; /* 모바일에서 입력칸과 버튼을 세로로 배치 */
+        gap: 10px;
+    }
+    #email-form input,
+    #email-form button {
+        padding: 15px;
+        font-size: 1em;
+        width: 100%; /* 모바일에서 너비 100% */
+    }
+    #message {
+        font-size: 1.2em;
     }
 }
