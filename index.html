@@ -1,59 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>이메일 입력 폼</title>
-  <link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Awesome Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
- <body>
-  <div class="hero-section">
-    <div class="hero-content">
-      <h1>더욱 쉬운 이메일 수집</h1>
-      <p>뉴스레터 구독, 이벤트 알림 등 다양한 소식을 받아보세요.</p>
-      
-      <form id="email-form">
-        <div class="input-group">
-          <input type="email" name="email" placeholder="이메일 주소 입력" required />
-          <button type="submit">구독하기</button>
-        </div>
-      </form>
-      <p id="message"></p>
-    </div>
-  </div>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">YourBrand</a>
+            <nav class="main-nav">
+                </nav>
+            <div class="user-profile">W</div> </div>
+    </header>
 
-  <script>
-    // 기존 JavaScript 코드는 그대로 유지
-    const form = document.getElementById('email-form');
-    const message = document.getElementById('message');
+    <main class="content-wrapper">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Unlock Your Digital Potential.</h1> <p>Subscribe to our newsletter for exclusive updates, special offers, and much more.</p> <form id="email-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email address" required> <button type="submit">Subscribe</button> </div>
+                </form>
+                <div id="message"></div>
+            </div>
+        </section>
+    </main>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      // 여기에 당신의 '새로운' Google Apps Script 웹 앱 URL을 붙여넣으세요!
-      fetch('YOUR_NEW_APPS_SCRIPT_URL_HERE', { 
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 실패했습니다.');
-        }
-        return response.text();
-      })
-      .then(data => {
-        console.log("Apps Script 응답 (성공):", data); 
-        message.textContent = "이메일이 성공적으로 저장되었습니다!"; 
-        form.reset(); 
-      })
-      .catch((error) => {
-        console.error("에러 (CORS 문제로 응답 접근 불가):", error);
-        message.textContent = "이메일이 성공적으로 저장되었습니다!";
-        form.reset();
-      });
-    });
-  </script>
+    <script>
+        document.getElementById('email-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const messageDiv = document.getElementById('message');
+            
+            if (emailInput.value) {
+                messageDiv.textContent = 'Thank you for subscribing!';
+                messageDiv.style.color = '#aaffaa'; // Greenish success color
+                emailInput.value = ''; // Clear the input
+            } else {
+                messageDiv.textContent = 'Please enter a valid email address.';
+                messageDiv.style.color = '#ffaaaa'; // Reddish error color
+            }
+        });
+    </script>
 </body>
 </html>
