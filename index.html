@@ -31,8 +31,7 @@
                         <button type="submit">Join</button>
                     </div>
                 </form>
-                <div id="message"></div>
-            </div>
+                </div>
         </section>
     </main>
 
@@ -45,55 +44,27 @@
             event.preventDefault(); // 페이지 새로고침 방지
 
             const emailInput = this.querySelector('input[type="email"]');
-            const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
-            // 메시지 초기화
-            messageDiv.textContent = ''; 
-            messageDiv.style.color = ''; 
-
             if (!email) {
-                // 이메일이 비어있으면 메시지 출력 (입력창은 비우지 않음)
-                messageDiv.textContent = 'Please enter a valid email address.';
-                messageDiv.style.color = '#ffaaaa';
+                // 이메일이 비어있으면 아무것도 하지 않고 함수 종료 (오류 메시지 없음)
                 return;
             }
 
-            // 제출 중 메시지 표시
-            messageDiv.textContent = 'Sending your email...'; 
-            messageDiv.style.color = '#cccccc';
-
             try {
-                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                // 요청 전송 (응답은 무시)
+                await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: new FormData(this) // HTML 폼 데이터를 직접 전송
+                    body: new FormData(this) 
                 });
 
-                const resultText = await response.text(); // 응답 본문을 텍스트로 받음
-
-                // Apps Script에서 "Success" 문자열을 받았는지 확인
-                if (resultText === 'Success') { 
-                    messageDiv.textContent = 'Thank you! Your email has been successfully saved.'; // 성공 메시지 고정
-                    messageDiv.style.color = '#aaffaa';
-                } else {
-                    // "Success"가 아니면 무조건 실패 메시지 출력
-                    messageDiv.textContent = 'Subscription failed. Please try again.'; 
-                    messageDiv.style.color = '#ffaaaa';
-                }
             } catch (error) {
-                // 네트워크 연결 오류 등 Fetch API 자체의 오류 발생 시
+                // 네트워크 오류 등이 발생해도 사용자에게 메시지를 보여주지 않음.
+                // 개발자 콘솔에만 오류를 기록.
                 console.error('Error during form submission:', error);
-                messageDiv.textContent = 'Network error: Could not connect to the server.'; 
-                messageDiv.style.color = '#ffaaaa';
             } finally {
-                // ⭐⭐⭐ 무조건 입력창 비우기 (성공/실패/네트워크 오류와 관계없이) ⭐⭐⭐
+                // ⭐⭐⭐ 성공/실패/오류와 관계없이 무조건 입력창 비우기 ⭐⭐⭐
                 emailInput.value = ''; 
-
-                // 메시지가 5초 후에 사라지도록 설정
-                setTimeout(() => {
-                    messageDiv.textContent = '';
-                    messageDiv.style.color = '';
-                }, 5000); 
             }
         });
     </script>
