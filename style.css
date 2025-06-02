@@ -33,7 +33,7 @@ body::before {
     width: 100%;
     height: 100%;
     /* ⭐⭐⭐ 여기에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
-    background-image: url('alpine-7703065_1920.jpg'); 
+    background-image: url('alpine-7703065_1920.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(8px) brightness(0.95);
@@ -48,7 +48,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%); 
+    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%);
     z-index: -1;
 }
 
@@ -76,25 +76,27 @@ body::after {
     align-items: center;
 }
 
-/* ⭐⭐⭐ brand-group 스타일: 아이콘과 로고 텍스트를 함께 정렬 ⭐⭐⭐ */
-.brand-group {
+/* ⭐⭐⭐ brand-logo 스타일: 아이콘과 로고 텍스트를 가로로 정렬 ⭐⭐⭐ */
+.brand-logo {
     display: flex;
     align-items: center;
     gap: 10px; /* 아이콘과 텍스트 사이 간격 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: white; /* 로고 텍스트 색상 */
 }
 
-/* ⭐⭐⭐ brand-icon 스타일: 노란색 M 박스 ⭐⭐⭐ */
-.brand-icon {
-    width: 40px;
-    height: 40px;
+/* ⭐⭐⭐ logo-icon 스타일: 노란색 M 박스 (브랜드 로고) ⭐⭐⭐ */
+.logo-icon {
+    width: 36px; /* 아이콘 너비 줄임 */
+    height: 36px; /* 아이콘 높이 줄임 */
     background-color: #FFD700; /* 황금색 노란색 */
     color: #333; /* 텍스트 색상 */
-    font-size: 1.5em; /* M 글자 크기 */
+    font-size: 1.3em; /* M 글자 크기 줄임 */
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px; /* ⭐⭐ 둥근 사각형 모양 ⭐⭐ */
+    border-radius: 6px; /* ⭐⭐ 약간 더 각진 사각형 모양 ⭐⭐ */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 그림자 */
 }
 
@@ -105,6 +107,7 @@ body::after {
     text-decoration: none;
     letter-spacing: -0.03em;
 }
+/* 기존의 .logo 스타일은 .brand-logo a 태그에 이미 적용되어 있으므로 여기서는 생략 가능 */
 
 .main-nav a {
     color: rgba(255, 255, 255, 0.8);
@@ -201,7 +204,7 @@ body::after {
 }
 
 /* 입력창 유리 느낌 효과 */
-#email-form input[type="email"] {
+#email-form input\[type="email"] {
     flex-grow: 1;
     padding: 16px 25px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -215,11 +218,11 @@ body::after {
     transition: all 0.3s ease;
 }
 
-#email-form input[type="email"]::placeholder {
+#email-form input\[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-#email-form input[type="email"]:focus {
+#email-form input\[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.2);
@@ -269,10 +272,14 @@ body::after {
     .header-container {
         padding: 0 20px;
     }
-    .brand-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2em;
+    .brand-logo {
+        gap: 8px;
+    }
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+        border-radius: 4px;
     }
     .logo {
         font-size: 1.5em;
@@ -295,7 +302,7 @@ body::after {
         font-size: 1em;
         margin-bottom: 25px;
     }
-    #email-form input,
+    #email-form input\[type="email"],
     #email-form button {
         padding: 14px 20px;
         font-size: 0.95em;
