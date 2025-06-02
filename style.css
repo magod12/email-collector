@@ -5,7 +5,6 @@
 /* ------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
 /* 'Pretendard' 폰트를 사용합니다. (최신 웹에 적합한 깔끔한 폰트) */
-/* 만약 이 폰트가 잘 안 나온다면, 'Arial', sans-serif 등으로 바꿔도 됩니다. */
 
 
 /* ------------------------------------- */
@@ -17,17 +16,17 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center; /* ⭐⭐ 수직 중앙 정렬 유지 ⭐⭐ */
+    align-items: center; /* 수직 중앙 정렬 유지 */
     min-height: 100vh; /* 화면 전체 높이 유지 */
     background-color: #1a1a2e; /* 기본 배경색 (어두운 계열 유지) */
     color: #e0e0e0; /* 기본 글자색 (밝은 계열 유지) */
     line-height: 1.6;
-    overflow-x: hidden; /* 가로 스크롤바 방지 */
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
-    position: relative; /* 배경 이미지를 위한 기준점 */
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
 }
 
-/* ⭐⭐⭐ 예시 이미지처럼 전체 화면 배경 이미지 및 자연스러운 오버레이 ⭐⭐⭐ */
+/* ⭐⭐⭐ 배경 이미지 존재감 강화 (밝기, 오버레이 조절) ⭐⭐⭐ */
 body::before {
     content: "";
     position: absolute;
@@ -39,9 +38,9 @@ body::before {
     background-image: url('alpine-7703065_1920.jpg'); 
     background-size: cover;
     background-position: center;
-    filter: blur(8px) brightness(0.85); /* ⭐⭐ 블러 강도 줄이고, 밝기 더 높여서 이미지 선명하게 ⭐⭐ */
-    z-index: -2; /* 가장 뒤로 보냄 */
-    transform: scale(1.02); /* 블러로 인한 가장자리 잘림 방지 */
+    filter: blur(8px) brightness(0.95); /* ⭐⭐ 블러 유지, 밝기 더 높여서 이미지 선명하게 ⭐⭐ */
+    z-index: -2;
+    transform: scale(1.02);
 }
 
 body::after {
@@ -51,67 +50,67 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.15); /* ⭐⭐ 오버레이 투명도 대폭 줄여서 배경 이미지 더 보이게 ⭐⭐ */
-    z-index: -1; /* 배경 이미지 위, 콘텐츠 아래 */
+    background-color: rgba(0, 0, 0, 0.08); /* ⭐⭐ 오버레이 투명도 더 낮춰서 배경 이미지 더 보이게 ⭐⭐ */
+    z-index: -1;
 }
 
 /* ------------------------------------- */
 /* 2. 히어로 섹션 (메인 콘텐츠 카드 영역) 스타일 */
 /* ------------------------------------- */
 .hero-section {
-    width: 90%; /* 카드 너비 설정 */
-    max-width: 900px; /* 최대 너비 설정 */
-    padding: 60px 40px; /* 카드 내부 패딩 (넉넉하게) */
+    width: 90%;
+    max-width: 900px;
+    padding: 60px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: white; /* 텍스트 색상 흰색 */
+    color: white;
     position: relative;
-    z-index: 1; /* 다른 배경 위에 오도록 설정 */
+    z-index: 1;
 
-    /* ⭐⭐⭐ 예시 이미지의 자연스러운 유리 모피즘 카드 효과 ⭐⭐⭐ */
-    background-color: rgba(255, 255, 255, 0.05); /* ⭐⭐ 배경 투명도 대폭 낮춰서 배경 이미지가 은은하게 비치도록 ⭐⭐ */
-    backdrop-filter: blur(10px); /* ⭐⭐ 블러 강도 대폭 낮춰서 자연스러운 프로스트 효과 ⭐⭐ */
-    border-radius: 20px; /* 모서리 더 둥글게 */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* ⭐⭐ 그림자 약간 부드럽게 조정 ⭐⭐ */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* ⭐⭐ 얇고 더 투명한 테두리 ⭐⭐ */
+    /* ⭐⭐⭐ 중앙 블러 박스 투명도/블러 강도 자연스럽게 조절 ⭐⭐⭐ */
+    background-color: rgba(255, 255, 255, 0.08); /* ⭐⭐ 카드 배경 투명도 약간 높여서 배경 더 비치게 ⭐⭐ */
+    backdrop-filter: blur(8px); /* ⭐⭐ 블러 강도 낮춰서 자연스러운 프로스트 효과 ⭐⭐ */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 그림자 유지 */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* ⭐⭐ 테두리 투명도 약간 낮춰서 더 잘 보이게 ⭐⭐ */
 }
 
 /* ------------------------------------- */
 /* 3. 히어로 섹션 내부 콘텐츠 스타일 (텍스트) */
 /* ------------------------------------- */
 .hero-content {
-    max-width: 700px; /* 텍스트 최대 너비 */
+    max-width: 700px;
     margin: 0 auto;
     z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 3.5em; /* ⭐⭐ 제목 글자 크기 조정 (예시 이미지와 유사) ⭐⭐ */
-    font-weight: 800; /* 폰트 굵기 유지 (매우 두껍게) */
-    margin-bottom: 25px;
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 35px; /* ⭐⭐ 제목 아래 여백 조정 (더 여유롭게) ⭐⭐ */
     letter-spacing: -0.04em;
     line-height: 1.2;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
-    font-size: 1.2em; /* ⭐⭐ 단락 글자 크기 조정 (예시 이미지와 유사) ⭐⭐ */
+    font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 40px; /* ⭐⭐ 단락 아래 여백 조정 (예시 이미지와 유사) ⭐⭐ */
+    margin-bottom: 50px; /* ⭐⭐ 부제목 아래 여백 조정 (더 여유롭게) ⭐⭐ */
     opacity: 0.95;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------------------------- */
-/* 4. 폼 스타일 (예시 이미지와 같이 적절한 크기와 디자인) */
+/* 4. 폼 스타일 */
 /* ------------------------------------- */
 #email-form {
-    background: none; /* 폼 자체 배경 없음 */
+    background: none;
     padding: 0;
-    max-width: 600px; /* ⭐⭐ 폼의 최대 너비 유지 ⭐⭐ */
+    max-width: 600px;
     width: 100%;
     margin: 0 auto;
     border-radius: 0;
@@ -123,55 +122,54 @@ body::after {
 /* 입력칸과 버튼을 묶는 input-group 스타일 */
 .input-group {
     display: flex;
-    gap: 15px; /* 입력칸과 버튼 사이 간격 유지 */
+    gap: 15px;
     flex-wrap: wrap;
-    justify-content: center; /* 폼 요소 중앙 정렬 유지 */
+    justify-content: center;
 }
 
 #email-form input[type="email"] {
     flex-grow: 1;
-    padding: 15px 22px; /* ⭐⭐ 패딩 조정 (예시 이미지와 유사한 크기) ⭐⭐ */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* ⭐⭐ 얇고 은은한 테두리 ⭐⭐ */
-    border-radius: 12px; /* ⭐⭐ 모서리 더 둥글게 (예시 이미지와 유사) ⭐⭐ */
-    font-size: 1.05em; /* ⭐⭐ 글자 크기 조정 ⭐⭐ */
-    min-width: 250px; /* 최소 너비 조정 */
+    padding: 15px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 1.05em;
+    min-width: 250px;
     box-sizing: border-box;
-    /* ⭐⭐⭐ 예시 이미지의 입력창 배경색 (반투명 어두운 회색) ⭐⭐⭐ */
-    background-color: rgba(0, 0, 0, 0.3); /* ⭐⭐ 투명한 검은색으로 변경하여 예시 이미지와 동일하게 ⭐⭐ */
-    color: white; /* 입력 텍스트 색상 흰색 */
+    background-color: rgba(0, 0, 0, 0.3); /* 투명한 어두운 회색 유지 */
+    color: white;
     transition: all 0.3s ease;
 }
 
 #email-form input[type="email"]::placeholder {
-    color: rgba(255, 255, 255, 0.6); /* 플레이스홀더 텍스트 색상 흰색 계열 유지 */
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #email-form input[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-    background-color: rgba(0, 0, 0, 0.4); /* ⭐⭐ 포커스 시 배경색 약간 진하게 ⭐⭐ */
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 #email-form button {
-    /* ⭐⭐⭐ 예시 이미지와 같이 단색 흰색 버튼, 그림자 및 둥근 모서리 ⭐⭐⭐ */
-    background-color: white; /* ⭐⭐ 단색 흰색 배경 ⭐⭐ */
-    color: #333; /* 버튼 글자색 어두운 회색 */
-    padding: 15px 30px; /* ⭐⭐ 패딩 조정 (예시 이미지와 유사한 크기) ⭐⭐ */
-    border: none; /* 테두리 제거 */
-    border-radius: 12px; /* ⭐⭐ 모서리 더 둥글게 (예시 이미지와 유사) ⭐⭐ */
+    /* ⭐⭐⭐ 버튼의 은은한 빛 감도는 느낌 추가 ⭐⭐⭐ */
+    background-image: linear-gradient(to top, #ffffff 0%, #fcfcfc 100%); /* ⭐⭐ 흰색에서 아주 미세하게 밝은 회색으로 그라데이션 ⭐⭐ */
+    color: #333;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 1.05em; /* ⭐⭐ 글자 크기 조정 ⭐⭐ */
+    font-size: 1.05em;
     font-weight: 600;
     transition: all 0.2s ease;
     letter-spacing: 0.05em;
     white-space: nowrap;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* ⭐⭐ 버튼에 은은한 그림자 추가 ⭐⭐ */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ⭐⭐ 그림자 강도 약간 줄임 ⭐⭐ */
 }
 
 #email-form button:hover {
-    background-color: #f0f0f0; /* 호버 시 아주 미묘하게 회색으로 */
+    background-image: linear-gradient(to top, #f0f0f0 0%, #ebebeb 100%); /* ⭐⭐ 호버 시 그라데이션을 더 진하게 (아주 미세하게) ⭐⭐ */
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* 호버 시 그림자 강조 */
 }
 
 /* ------------------------------------- */
@@ -196,11 +194,11 @@ body::after {
     }
     .hero-content h1 {
         font-size: 2.2em;
-        margin-bottom: 15px;
+        margin-bottom: 20px; /* 모바일 여백 조정 */
     }
     .hero-content p {
         font-size: 1em;
-        margin-bottom: 25px;
+        margin-bottom: 35px; /* 모바일 여백 조정 */
     }
     #email-form {
         max-width: 100%;
