@@ -85,31 +85,31 @@ body::after {
     color: white;
 }
 
-/* logo-icon 스타일: M 박스 M과 글자 사이 간격 조정 */
+/* ⭐⭐⭐ logo-icon 스타일: M 박스 크기 및 폰트 크기 조정 ⭐⭐⭐ */
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 30px; /* 40px -> 30px로 줄임 */
+    height: 30px; /* 40px -> 30px로 줄임 */
     background-color: #FFD700;
     color: #333;
-    font-size: 1.5em; /* M 아이콘 폰트 크기 유지 */
+    font-size: 1.2em; /* 1.5em -> 1.2em으로 줄여 M 글자 크기 조정 */
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-right: 5px; /* M 아이콘과 YourBrand 텍스트 사이에 5px 간격 부여 */
+    border-radius: 6px; /* 모서리 둥글기 조정 */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* 그림자 약하게 */
+    margin-right: 5px; 
 }
 
-/* ⭐⭐⭐ YourBrand 텍스트 스타일: 굵고 아주 크게, 눈에 확 들어오게, M 네모와 사이즈 맞춤 ⭐⭐⭐ */
-.brand-logo { /* flex 컨테이너이므로 자식 요소를 정렬합니다. */
-    font-size: 2.2em; /* M 아이콘(1.5em)과 시각적으로 잘 어울리도록 조절 */
-    font-weight: 900; /* 폰트 굵기를 최대로 */
+/* YourBrand 텍스트 스타일 */
+.brand-logo { 
+    font-size: 1.8em; /* 2.2em -> 1.8em으로 줄여 텍스트 크기 조정 */
+    font-weight: 900; 
     color: white;
     text-decoration: none;
-    letter-spacing: -0.05em; /* 글자 간격 더 좁게 하여 꽉 찬 느낌 */
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); /* 그림자 더 강하게 하여 입체감 */
-    line-height: 1; /* 글자 라인 높이를 조절하여 M 아이콘과 수직 정렬 */
+    letter-spacing: -0.05em; 
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); 
+    line-height: 1; 
 }
 
 
@@ -279,14 +279,14 @@ body::after {
         padding: 0 10px;
     }
     .logo-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2em;
-        border-radius: 6px;
+        width: 28px; /* 모바일에서 더 줄임 */
+        height: 28px; /* 모바일에서 더 줄임 */
+        font-size: 1.1em; /* 모바일에서 폰트 크기 조정 */
+        border-radius: 5px; /* 모바일에서 둥글기 조정 */
         margin-right: 3px;
     }
-    .brand-logo { /* 모바일에서 로고 텍스트 크기 및 정렬 재조정 */
-        font-size: 1.6em; 
+    .brand-logo { 
+        font-size: 1.5em; /* 모바일에서 로고 텍스트 크기 조정 */
         font-weight: 900;
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     }
