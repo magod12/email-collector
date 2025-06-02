@@ -37,16 +37,17 @@
     </main>
 
     <script>
-        // ⭐⭐ 여기에 Step 3에서 새로 복사한 "/exec"로 끝나는 Apps Script URL을 정확히 붙여넣으세요! ⭐⭐
-        const GOOGLE_APPS_SCRIPT_URL = 'YOUR_NEW_APPS_SCRIPT_WEB_APP_URL_ENDING_WITH_SLASH_EXEC'; 
+        // ⭐⭐ 새로운 Google Apps Script URL이 여기에 반영되었습니다! ⭐⭐
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj3pyHskBhVx5RykzED-MrWHZr6GE8WAG8-zldzB5B2QRephd-VJmbgsajUGJ152NL/exec'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+            event.preventDefault(); // 페이지 새로고침 방지
 
             const emailInput = this.querySelector('input[type="email"]');
             const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
+            // 이전 메시지 초기화
             messageDiv.textContent = ''; 
             messageDiv.style.color = ''; 
 
@@ -56,7 +57,7 @@
                 return;
             }
 
-            messageDiv.textContent = 'Sending email...'; 
+            messageDiv.textContent = 'Sending your email...'; // "Sending email..."에서 변경
             messageDiv.style.color = '#cccccc';
 
             try {
@@ -68,24 +69,25 @@
                 const resultText = await response.text(); 
 
                 if (resultText === 'Success') { 
-                    messageDiv.textContent = 'Successfully subscribed! Thank you!'; // 성공 메시지 추가
+                    messageDiv.textContent = 'Thank you! Your email has been successfully saved.'; // 성공 메시지
                     messageDiv.style.color = '#aaffaa';
-                    emailInput.value = ''; 
+                    emailInput.value = ''; // 성공 시 입력창 비우기
                 } else {
                     // Apps Script에서 "Error: [메시지]" 형태의 문자열을 반환할 경우
-                    messageDiv.textContent = 'Subscription failed. Please try again. (' + resultText + ')'; // 실패 메시지 변경
+                    messageDiv.textContent = 'Subscription failed. Please try again. (Server responded: ' + resultText + ')'; // 실패 메시지에 서버 응답 포함
                     messageDiv.style.color = '#ffaaaa';
                 }
             } catch (error) {
                 console.error('Error during form submission:', error);
-                messageDiv.textContent = 'Network error. Please check your connection.'; // 네트워크 오류 메시지 간략화
+                messageDiv.textContent = 'Network error: Could not connect to the server.'; // 네트워크 오류 메시지
                 messageDiv.style.color = '#ffaaaa';
             }
-             // ⭐ 메시지가 너무 빨리 사라지는 것을 방지하려면 이 주석을 해제하세요.
-             setTimeout(() => {
-                 messageDiv.textContent = '';
-                 messageDiv.style.color = '';
-             }, 5000); // 5초 후에 메시지 사라짐
+            
+            // 메시지가 너무 빨리 사라지는 것을 방지하기 위해 5초 후에 사라지도록 설정
+            setTimeout(() => {
+                messageDiv.textContent = '';
+                messageDiv.style.color = '';
+            }, 5000); // 5초 후에 메시지 사라짐
         });
     </script>
 </body>
