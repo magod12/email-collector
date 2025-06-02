@@ -10,7 +10,7 @@
 /* 1. 전체 페이지 기본 스타일 */
 /* ------------------------------------- */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif; /* 영어에 어울리는 고급진 'Inter' 폰트 적용 */
     margin: 0;
     padding: 0;
     display: flex;
@@ -33,7 +33,7 @@ body::before {
     width: 100%;
     height: 100%;
     /* ⭐⭐⭐ 여기에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
-    background-image: url('alpine-7703065_1920.jpg');
+    background-image: url('alpine-7703065_1920.jpg'); 
     background-size: cover;
     background-position: center;
     filter: blur(8px) brightness(0.95);
@@ -48,7 +48,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%);
+    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%); 
     z-index: -1;
 }
 
@@ -76,7 +76,7 @@ body::after {
     align-items: center;
 }
 
-/* ⭐⭐⭐ brand-logo 스타일: 아이콘과 로고 텍스트를 가로로 정렬 ⭐⭐⭐ */
+/* brand-logo 스타일: 아이콘과 로고 텍스트를 가로로 정렬 */
 .brand-logo {
     display: flex;
     align-items: center;
@@ -85,29 +85,29 @@ body::after {
     color: white; /* 로고 텍스트 색상 */
 }
 
-/* ⭐⭐⭐ logo-icon 스타일: 노란색 M 박스 (브랜드 로고) ⭐⭐⭐ */
+/* ⭐⭐⭐ logo-icon 스타일: M 박스 크기 및 텍스트 선명도 복원 ⭐⭐⭐ */
 .logo-icon {
-    width: 36px; /* 아이콘 너비 줄임 */
-    height: 36px; /* 아이콘 높이 줄임 */
+    width: 40px; /* ⭐⭐ 아이콘 너비 복원 ⭐⭐ */
+    height: 40px; /* ⭐⭐ 아이콘 높이 복원 ⭐⭐ */
     background-color: #FFD700; /* 황금색 노란색 */
-    color: #333; /* 텍스트 색상 */
-    font-size: 1.3em; /* M 글자 크기 줄임 */
+    color: #333; /* ⭐⭐ M 글자색을 어둡게 하여 선명도 높임 ⭐⭐ */
+    font-size: 1.5em; /* ⭐⭐ M 글자 크기 복원 ⭐⭐ */
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 6px; /* ⭐⭐ 약간 더 각진 사각형 모양 ⭐⭐ */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 그림자 */
+    border-radius: 8px; /* 둥근 사각형 모양 유지 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
-    font-size: 1.8em;
+/* ⭐⭐⭐ logo 텍스트 스타일: 글자 크기 복원 ⭐⭐⭐ */
+.logo { /* .brand-logo 안에 있는 a 태그 */
+    font-size: 1.8em; /* ⭐⭐ 로고 텍스트 크기 복원 ⭐⭐ */
     font-weight: 800;
-    color: white;
-    text-decoration: none;
+    color: white; /* 텍스트 색상 */
+    text-decoration: none; /* 링크 밑줄 제거 */
     letter-spacing: -0.03em;
 }
-/* 기존의 .logo 스타일은 .brand-logo a 태그에 이미 적용되어 있으므로 여기서는 생략 가능 */
 
 .main-nav a {
     color: rgba(255, 255, 255, 0.8);
@@ -138,7 +138,7 @@ body::after {
 .hero-section {
     width: 90%;
     max-width: 900px;
-    padding: 40px 50px; /* 위 아래 여백 아주 약간 (손가락 한 마디 정도) */
+    padding: 40px 50px; /* 위 아래 여백 아주 약간 (손가락 한 마디 정도) 유지 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,7 +167,7 @@ body::after {
 .hero-content h1 {
     font-size: 3.5em;
     font-weight: 800;
-    margin-bottom: 20px; /* 제목 아래 여백 아주 약간 */
+    margin-bottom: 20px; /* 제목 아래 여백 아주 약간 유지 */
     letter-spacing: -0.04em;
     line-height: 1.2;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -176,7 +176,7 @@ body::after {
 .hero-content p {
     font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 30px; /* 부제목 아래 여백 아주 약간 */
+    margin-bottom: 30px; /* 부제목 아래 여백 아주 약간 유지 */
     opacity: 0.95;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -203,13 +203,13 @@ body::after {
     justify-content: center;
 }
 
-/* 입력창 유리 느낌 효과 */
-#email-form input\[type="email"] {
+/* ⭐⭐⭐ 입력창 유리 느낌 효과 및 크기 복원 ⭐⭐⭐ */
+#email-form input[type="email"] {
     flex-grow: 1;
-    padding: 16px 25px;
+    padding: 18px 25px; /* ⭐⭐ 입력창 패딩 복원 (더 높게) ⭐⭐ */
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    font-size: 1.05em;
+    font-size: 1.1em; /* ⭐⭐ 입력창 글자 크기 복원 ⭐⭐ */
     min-width: 260px;
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0.15);
@@ -218,25 +218,25 @@ body::after {
     transition: all 0.3s ease;
 }
 
-#email-form input\[type="email"]::placeholder {
+#email-form input[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-#email-form input\[type="email"]:focus {
+#email-form input[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* 버튼의 그라디언트 및 호버 애니메이션 */
+/* ⭐⭐⭐ 버튼의 크기 복원 및 고급화 ⭐⭐⭐ */
 #email-form button {
     background-image: linear-gradient(to bottom right, #ffffff 0%, #f0f0f0 100%);
     color: #333;
-    padding: 16px 35px;
+    padding: 18px 35px; /* ⭐⭐ 버튼 패딩 복원 (더 높게) ⭐⭐ */
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 1.05em;
+    font-size: 1.1em; /* ⭐⭐ 버튼 글자 크기 복원 ⭐⭐ */
     font-weight: 600;
     transition: all 0.3s ease;
     letter-spacing: 0.05em;
@@ -272,16 +272,13 @@ body::after {
     .header-container {
         padding: 0 20px;
     }
-    .brand-logo {
-        gap: 8px;
-    }
     .logo-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 1em;
-        border-radius: 4px;
+        width: 35px; /* 모바일 아이콘 크기 조정 */
+        height: 35px;
+        font-size: 1.2em;
+        border-radius: 6px;
     }
-    .logo {
+    .brand-logo .logo { /* 모바일에서 로고 텍스트 크기 */
         font-size: 1.5em;
     }
     .main-nav {
@@ -302,7 +299,7 @@ body::after {
         font-size: 1em;
         margin-bottom: 25px;
     }
-    #email-form input\[type="email"],
+    #email-form input[type="email"],
     #email-form button {
         padding: 14px 20px;
         font-size: 0.95em;
