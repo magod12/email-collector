@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,8 +22,8 @@
     <main class="content-wrapper">
         <section class="hero-section">
             <div class="hero-content">
-                <h1>Meaningless.</h1>
-                <p>In the old days, when wishing still helped...</p>
+                <h1>Bedeutungslos.</h1>
+                <p>In den alten Zeiten, als das Wünschen noch geholfen hat...</p>
 
                 <form id="email-form">
                     <div class="input-group">
@@ -38,7 +38,7 @@
 
     <script>
         // ⭐⭐⭐ 새로운 Google Apps Script URL로 업데이트되었습니다! ⭐⭐⭐
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQT8cfdT_v-s4y-7IdKHOJJEgqb0imZLkMwETYprl4oBr9ls7fv2ewHbA_ShoxtZrd5Q/exec';
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBSJ6xfs3m3XzoS0m11bbYq0GZcVNNceAeQraFa5Q5sAPmbvzR16edR0In-YbR1SPclw/exec'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent page reload
@@ -53,36 +53,5 @@
                 return;
             }
 
-            messageDiv.textContent = 'Sending email...'; // Message for "in progress"
-            messageDiv.style.color = '#cccccc';
-
-            try {
-                const formData = new FormData();
-                formData.append('email', email);
-
-                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                // Expecting a plain text response from Apps Script ("Success" or "Error:...")
-                const resultText = await response.text(); 
-
-                if (resultText === 'Success') { 
-                    messageDiv.textContent = 'Successfully subscribed! Thank you.';
-                    messageDiv.style.color = '#aaffaa';
-                    emailInput.value = ''; // Clear input on success
-                } else {
-                    // Display specific error from Apps Script or a generic one
-                    messageDiv.textContent = 'Failed to send email. Please try again. (' + resultText + ')'; 
-                    messageDiv.style.color = '#ffaaaa';
-                }
-            } catch (error) {
-                console.error('Error during form submission:', error);
-                messageDiv.textContent = 'Network error occurred. Please check your internet connection.';
-                messageDiv.style.color = '#ffaaaa';
-            }
-        });
-    </script>
-</body>
-</html>
+            messageDiv.textContent = 'Sending email...';
+            messageDiv.
