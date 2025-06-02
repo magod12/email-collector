@@ -103,11 +103,11 @@ body::after {
 
 /* ⭐⭐⭐ YourBrand 텍스트 스타일: 굵고 아주 크게, 눈에 확 들어오게! ⭐⭐⭐ */
 .brand-logo .logo {
-    font-size: 2.5em; /* ⭐⭐ 글자 크기를 훨씬 더 크게! ⭐⭐ */
-    font-weight: 900; /* 폰트 굵기를 최대로 (Inter 폰트의 가장 굵은 웨이트) */
+    font-size: 1.8em; /* ⭐⭐ 글자 크기를 훨씬 더 크게! ⭐⭐ */
+    font-weight: 800; /* 폰트 굵기를 최대로 (Inter 폰트의 가장 굵은 웨이트) */
     color: white;
     text-decoration: none;
-    letter-spacing: -0.05em; /* 글자 간격 더 좁게 하여 꽉 찬 느낌 */
+    letter-spacing: -0.03em; /* 글자 간격 더 좁게 하여 꽉 찬 느낌 */
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); /* ⭐⭐ 그림자 더 강하게 하여 입체감과 '있어보이는' 느낌 극대화 ⭐⭐ */
 }
 
