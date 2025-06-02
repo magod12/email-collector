@@ -142,23 +142,25 @@ body {
 }
 
 #email-form button {
-    /* 기존 파란색 #007bff 대신 더 모던한 색상으로 변경 */
-    background-color: #00bcd4; /* 청록색 계열 (예시 이미지와 비슷한 느낌) */
-    color: #ffffff; /* 버튼 글자색 흰색 */
-    padding: 18px 30px; /* 패딩 늘림 */
+    /* ⭐⭐⭐ 이 부분이 변경되었습니다! 흰색~회색 그라데이션 버튼 ⭐⭐⭐ */
+    background-image: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%); /* 흰색에서 연회색으로 그라데이션 */
+    color: #333; /* 버튼 글자색 어두운 회색으로 변경 */
+    padding: 18px 30px; /* 패딩 유지 */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2em;
-    font-weight: 600; /* 글자 두껍게 */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    letter-spacing: 0.05em; /* 글자 간격 추가 */
-    white-space: nowrap; /* 버튼 텍스트가 줄바꿈되지 않도록 */
+    font-weight: 600;
+    transition: all 0.3s ease; /* 호버 효과 부드럽게 */
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 버튼에 은은한 그림자 추가 */
 }
 
 #email-form button:hover {
-    background-color: #00a4bd; /* 호버 시 더 진한 청록색 */
+    background-image: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 100%); /* 호버 시 색상 더 진하게 */
     transform: translateY(-3px); /* 호버 시 살짝 위로 올라가는 효과 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 더 진하게 */
 }
 
 /* ------------------------------------- */
