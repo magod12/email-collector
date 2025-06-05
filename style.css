@@ -172,12 +172,11 @@ body::after {
     margin: 0 auto; /* 좌우 자동 마진 (hero-section 중앙 정렬) */
     z-index: 1; /* 다른 요소들 위에 오도록 */
     
-    /* ⭐⭐ 이 부분을 flex로 변경하고 중앙 정렬 및 간격 조절 ⭐⭐ */
+    /* ⭐⭐ flex 속성을 사용하여 요소 간 간격 및 정렬 관리 ⭐⭐ */
     display: flex; /* Flexbox 적용 */
     flex-direction: column; /* 자식 요소들을 세로로 정렬 */
     align-items: center; /* 가로 중앙 정렬 */
-    /* justify-content: center; 제거 - 이미 hero-section이 flex-direction: column이므로 필요 없음 */
-    gap: 25px; /* ⭐ 자식 요소들 사이에 25px의 간격을 자동으로 추가 ⭐ */
+    gap: 20px; /* ⭐ 자식 요소들 사이에 20px의 간격을 자동으로 추가 ⭐ */
     width: 100%; /* 부모(hero-section)의 너비를 꽉 채우도록 */
 }
 
@@ -286,24 +285,26 @@ body::after {
 /* ------------------------------------- */
 .service-apply-button {
     display: inline-block; /* 링크지만 블록처럼 너비/높이/패딩 적용 가능 */
-    background-image: linear-gradient(to bottom right, #8A2BE2 0%, #4B0082 100%); /* 보라색 계열 그라디언트 */
+    /* ⭐⭐ 새로운 그라데이션 색상 (더 부드럽고 모던한 보라색 계열) ⭐⭐ */
+    background-image: linear-gradient(to bottom right, #7b4397 0%, #dc2430 100%); /* 보라색에서 핑크/레드로 전환되는 그라데이션 */
     color: white; /* 흰색 글자 */
-    padding: 20px 45px; /* Join 버튼보다 더 큰 패딩 */
+    padding: 22px 50px; /* Join 버튼보다 더 큰 패딩 (더 눈에 띄게) */
     border: none; /* 테두리 없음 */
     border-radius: 15px; /* 조금 더 둥글게 */
     cursor: pointer; /* 마우스 오버 시 포인터 변경 */
-    font-size: 1.5em; /* Join 버튼보다 큰 글자 크기 */
+    font-size: 1.6em; /* Join 버튼보다 큰 글자 크기 (더 눈에 띄게) */
     font-weight: 700; /* 두꺼운 글자 */
     text-decoration: none; /* 하이퍼링크 밑줄 제거 */
     letter-spacing: 0.08em; /* 자간 넓게 */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* 더 강한 그림자 */
     transition: all 0.3s ease; /* 모든 속성 변경 애니메이션 */
-    /* margin-top: 35px; 제거 - hero-content의 gap으로 간격 조절 */
+    margin-top: 15px; /* h1 아래에 바로 위치하므로 적절한 상단 마진 추가 */
     text-transform: uppercase; /* 텍스트를 모두 대문자로 변환 */
 }
 
 .service-apply-button:hover {
-    background-image: linear-gradient(to bottom right, #9932CC 0%, #5B1392 100%); /* 호버 시 색상 변경 (약간 더 밝게) */
+    /* ⭐⭐ 호버 시 그라데이션 색상 변경 (약간 더 밝고 활기찬 느낌) ⭐⭐ */
+    background-image: linear-gradient(to bottom right, #9d5bb0 0%, #ee3344 100%); 
     transform: translateY(-5px) scale(1.02); /* 더 크게 튀어 오르도록 이동 및 확대 */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* 호버 시 그림자 더 강하게 */
 }
@@ -344,11 +345,11 @@ body::after {
     }
     .hero-content h1 {
         font-size: 2.2em; /* 모바일에서 제목 크기 줄임 */
-        /* margin-bottom: 15px; */ /* gap으로 대체 */
+        /* margin-bottom: 0; */ /* gap으로 관리 */
     }
     .hero-content p {
         font-size: 1em; /* 모바일에서 단락 크기 줄임 */
-        /* margin-bottom: 25px; */ /* gap으로 대체 */
+        /* margin-bottom: 0; */ /* gap으로 관리 */
     }
     /* 모바일에서 폼 입력창과 버튼 크기 조정 */
     #email-form input[type="email"],
@@ -364,6 +365,6 @@ body::after {
         padding: 15px 30px; /* 모바일에서 패딩 줄임 */
         font-size: 1.2em; /* 모바일에서 글자 크기 줄임 */
         border-radius: 10px;
-        /* margin-top: 25px; */ /* gap으로 대체 */
+        margin-top: 15px; /* 모바일에서도 상단 마진 유지 */
     }
 }
