@@ -18,7 +18,6 @@
                 </nav>
         </div>
     </header>
-
     <main class="content-wrapper">
         <section class="hero-section">
             <div class="hero-content">
@@ -34,60 +33,65 @@
                 <div id="message"></div> 
                 
                 <a href="https://namu.wiki/w/%EC%95%84%EB%AC%B4%EA%B2%83%EB%8F%84%20%EC%95%88%ED%95%98%EA%B3%A0%20%EC%8B%B6%EB%8B%A4" 
-                   target="_blank" 
-                   class="service-apply-button">
+                   target="_blank"  class="service-apply-button">
                    서비스 신청하기
                 </a>
             </div>
         </section>
-    </main>
-
+        </main>
     <script>
         // ⭐⭐⭐ 중요: 여기에 당신의 Google Apps Script 웹 앱 URL을 정확히 붙여넣으세요! ⭐⭐⭐
+        // 이 URL은 Google Apps Script 프로젝트를 웹 앱으로 배포했을 때 생성됩니다.
         // 예시: 'https://script.google.com/macros/s/AKfycbxxxxxxxxx/exec';
         const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMN6j6Dyy1vwsEbkG0cSYcc1c9K8a09Hhq1VmK8nDDpKUG_Y22vKckFp4j53NEIXc2wg/exec'; 
 
+        // 이메일 폼 제출 이벤트 리스너
         document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // 페이지 새로고침 방지
+            event.preventDefault(); // 폼 제출 시 기본 동작 (페이지 새로고침) 방지
 
-            const emailInput = this.querySelector('input[type="email"]');
-            const messageDiv = document.getElementById('message'); 
-            const email = emailInput.value.trim();
+            const emailInput = this.querySelector('input[type="email"]'); // 이메일 입력 필드 가져오기
+            const messageDiv = document.getElementById('message'); // 메시지 표시 div 가져오기
+            const email = emailInput.value.trim(); // 이메일 값 가져오기 (공백 제거)
 
-            // 메시지 초기화
+            // 이전 메시지 초기화 (색상 포함)
             messageDiv.textContent = ''; 
             messageDiv.style.color = ''; 
 
+            // 이메일이 비어있으면 아무 작업도 하지 않고 함수 종료 (오류 메시지 표시 안 함)
             if (!email) {
-                // 이메일이 비어있으면 아무것도 하지 않고 함수 종료 (오류 메시지 없음)
                 return;
             }
 
             try {
-                // 요청 전송 (응답은 무시하거나, Apps Script에서 'Success'가 오든 'Error'가 오든 무조건 Thank you를 표시)
+                // Google Apps Script 웹 앱으로 데이터 전송
+                // fetch API를 사용하여 비동기적으로 POST 요청을 보냅니다.
+                // FormData를 사용하여 폼 데이터를 쉽게 보낼 수 있습니다.
                 await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: new FormData(this) 
+                    body: new FormData(this) // 폼의 모든 입력 필드 데이터를 자동으로 포함
                 });
 
                 // 성공 여부와 관계없이 무조건 "Thank you!" 메시지 출력
+                // 사용자가 서버 응답을 기다리지 않고 즉시 피드백을 받도록 함
                 messageDiv.textContent = 'Thank you!'; 
-                messageDiv.style.color = '#aaffaa'; // 녹색 계열
+                messageDiv.style.color = '#aaffaa'; // 메시지 색상 (녹색 계열)
 
             } catch (error) {
-                // 네트워크 오류 등이 발생해도 사용자에게는 "Thank you!" 메시지를 보여줍니다.
+                // 네트워크 오류 등 예외 발생 시 콘솔에 오류 기록
+                // 사용자에게는 여전히 "Thank you!" 메시지 표시 (긍정적인 경험 유지)
                 console.error('Error during form submission:', error);
                 messageDiv.textContent = 'Thank you!'; 
-                messageDiv.style.color = '#aaffaa'; // 녹색 계열
+                messageDiv.style.color = '#aaffaa'; 
             } finally {
-                // ⭐⭐⭐ 성공/실패/오류와 관계없이 무조건 입력창 비우기 ⭐⭐⭐
+                // 성공/실패/오류와 관계없이 항상 실행되는 부분
+                // ⭐ 입력창 비우기 ⭐
                 emailInput.value = ''; 
 
-                // 메시지가 5초 후에 사라지도록 설정
+                // 메시지가 5초 후에 자동으로 사라지도록 설정
                 setTimeout(() => {
                     messageDiv.textContent = '';
                     messageDiv.style.color = '';
-                }, 5000); 
+                }, 5000); // 5000밀리초 = 5초
             }
         });
     </script>
