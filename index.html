@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Awesome Landing Page</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://docs.google.com/forms/d/e/1FAIpQLSd7H_nrfT3pXQTAnY3vy3oIIeyivO1rctt5BwU8a1km2NReNw/viewform" rel="stylesheet">
-</head>
+    </head>
 <body>
     <header class="main-header">
         <div class="header-container">
@@ -37,7 +36,7 @@
     </main>
 
     <script>
-    
+        // 요청하신 Google Apps Script URL로 연결합니다.
         const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKtYEDPw5vGraR-xwPfuBXAif0CFsfu3p5Yk_FNr0dAP-AFAtZh_jPCAYc8ObptVEZ/exec'; 
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
@@ -47,29 +46,36 @@
             const messageDiv = document.getElementById('message'); 
             const email = emailInput.value.trim();
 
-           
             messageDiv.textContent = ''; 
             messageDiv.style.color = ''; 
 
             if (!email) {
-                
+                // 이메일이 비어있으면 아무것도 하지 않고 함수 종료 (원래 코드와 동일)
                 return;
             }
 
             try {
-                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                // Fetch 요청을 보냅니다.
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
                     body: new FormData(this) 
                 });
 
-                
-                messageDiv.textContent = 'submitted.'; 
-                messageDiv.style.color = '#aaffaa'; 
+                // 응답 상태가 성공적인지 확인 (선택 사항이지만 좋은 습관입니다)
+                if (response.ok) {
+                    messageDiv.textContent = 'submitted.'; // 원래 메시지 텍스트 유지
+                    messageDiv.style.color = '#aaffaa'; // 원래 메시지 색상 유지
+                } else {
+                    // 서버 응답이 성공적이지 않을 경우의 처리 (원래 코드에서는 없었음)
+                    console.error('Server responded with an error:', response.status, response.statusText);
+                    messageDiv.textContent = 'Error during submission.'; // 오류 메시지
+                    messageDiv.style.color = '#ffaaaa'; // 오류 메시지 색상
+                }
 
             } catch (error) {
                 console.error('Error during form submission:', error);
-                messageDiv.textContent = 'submitted.'; 
-                messageDiv.style.color = '#aaffaa';
+                messageDiv.textContent = 'submitted.'; // 원래 메시지 텍스트 유지
+                messageDiv.style.color = '#aaffaa'; // 원래 메시지 색상 유지
             } finally {
                 emailInput.value = ''; 
 
