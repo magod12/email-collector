@@ -94,7 +94,8 @@ body::after {
 
 /* 회사 로고 이미지 스타일 (확대) */
 .company-logo-img {
-    height: 45px; /* 로고 이미지 높이 조절 (기존 40px에서 약간 더 확대) */
+    height: 45px; /* 로고 이미지 높이 조절 */
+    /* object-fit: contain;  // 이미지가 너무 커지면 이 속성을 추가하여 비율 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 흰색 그림자 효과 유지 */
@@ -145,7 +146,6 @@ body::after {
     border-radius: 20px; /* 모서리 둥글게 */
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); /* 깊은 그림자 */
     border: 1px solid rgba(255, 255, 255, 0.15); /* 옅은 흰색 테두리 */
-    /* 수직 중앙 정렬을 위해 margin-top/bottom: auto 대신 flex 부모 요소에 align-items: center 적용 */
 }
 
 /* ------------------------------------- */
@@ -287,6 +287,7 @@ body::after {
     align-items: center;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* 이미지가 동그라미 밖으로 나가지 않도록 숨김 */
 }
 
 .social-icons a:hover {
@@ -298,7 +299,7 @@ body::after {
 .social-icons img {
     width: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
     height: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
-    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 (가장 중요한 속성) */
     /* filter: brightness(1.5); // 아이콘 자체의 색상에 따라 이 필터가 필요할 수 있습니다. */
 }
 
@@ -320,7 +321,7 @@ body::after {
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     }
     .company-logo-img {
-        height: 35px;  /* 모바일에서 로고 이미지 크기 조절 (기존 28px에서 살짝 확대) */
+        height: 35px;  /* 모바일에서 로고 이미지 크기 조절 */
         margin-right: 5px;
     }
     .main-nav {
