@@ -38,7 +38,6 @@ body::after {
     width: 100%;
     height: 100%;
     /* ⭐⭐⭐ 여기에 새로운 배경 이미지 파일 이름 `image_a98594.jpg`을 넣어주세요! ⭐⭐⭐ */
-    /* 만약 다른 이미지를 사용하고 싶으시다면 이 부분을 변경해주세요. */
     background-image: url('image_a98594.jpg'); /* 새로운 배경 이미지 */
     background-size: cover; /* 이미지를 커버하도록 설정 */
     background-position: left bottom; /* 좌측 하단에 정렬 */
@@ -54,14 +53,14 @@ body::after {
 .main-header {
     width: 100%;
     padding: 15px 0;
-    background-color: rgba(0, 0, 0, 0.8); /* ⭐ 검은색 배경으로 변경 (반투명) ⭐ */
-    backdrop-filter: blur(10px); /* 배경 블러 효과 */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 ⭐ */
+    backdrop-filter: blur(10px); /* 배경 블러 효과 유지 */
     position: fixed; /* 상단 고정 */
     top: 0;
     left: 0;
     z-index: 1000; /* 다른 요소 위에 오도록 설정 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 그림자 */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 하단 테두리 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 그림자 유지 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 하단 테두리 유지 */
 }
 
 /* 헤더 컨테이너: 왼쪽 여백 "손톱만큼"만 남김 */
@@ -79,34 +78,33 @@ body::after {
     display: flex;
     align-items: center;
     text-decoration: none; /* 밑줄 제거 */
-    color: white; /* ⭐ 텍스트 색상 흰색으로 변경 ⭐ */
+    color: white; /* 텍스트 색상 흰색으로 유지 */
     padding-left: 15px; /* 왼쪽 끝에 붙도록 패딩 유지 */
     font-size: 1.7em; /* 글자 크기 유지 */
     font-weight: 900; 
     letter-spacing: -0.05em; 
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 추가 */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 유지 */
     line-height: 1; 
 }
 
-/* 회사 로고 이미지 스타일 (확대) */
+/* 회사 로고 이미지 스타일 */
 .company-logo-img {
     height: 45px; /* 로고 이미지 높이 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
-    /* collectradar.png 파일이 검은색 로고이므로, 검은색 배경에서 흰색으로 보이게 필터 적용 */
-    filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* ⭐ 로고 색상 반전 및 흰색 그림자 ⭐ */
+    filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 로고 색상 반전 및 흰색 그림자 유지 */
 }
 
 .main-nav a {
-    color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 */
+    color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 유지 */
     text-decoration: none;
     font-size: 1em;
     margin-left: 25px;
-    transition: color 0.3s ease; /* 부드러운 전환 효과 */
+    transition: color 0.3s ease; /* 부드러운 전환 효과 유지 */
 }
 
 .main-nav a:hover {
-    color: white; /* 호버 시 흰색으로 변경 */
+    color: white; /* 호버 시 흰색으로 변경 유지 */
 }
 
 /* ------------------------------------- */
@@ -133,15 +131,15 @@ body::after {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: #333333; /* 텍스트 색상 어둡게 */
+    color: #333333; /* 텍스트 색상 어둡게 유지 */
     position: relative;
     z-index: 1;
 
-    background-color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 유지 */
-    backdrop-filter: blur(8px); /* 블러 효과 */
-    border-radius: 20px; /* 모서리 둥글게 */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* 깊은 그림자 */
-    border: 1px solid rgba(0, 0, 0, 0.05); /* 옅은 테두리 유지 */
+    background-color: rgba(255, 255, 255, 0.08); /* ⭐ 투명한 유리 느낌 다시 (불투명도 조정) ⭐ */
+    backdrop-filter: blur(15px); /* ⭐ 블러 강도 증가 ⭐ */
+    border-radius: 20px; /* 모서리 둥글게 유지 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25); /* 그림자 강화 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 옅은 흰색 테두리 */
 }
 
 /* ------------------------------------- */
@@ -159,7 +157,7 @@ body::after {
     margin-bottom: 20px;
     letter-spacing: -0.04em;
     line-height: 1.2;
-    text-shadow: none; /* 텍스트 그림자 제거 */
+    text-shadow: none; /* 텍스트 그림자 제거 유지 */
 }
 
 .hero-content p {
@@ -167,7 +165,7 @@ body::after {
     font-weight: 400;
     margin-bottom: 30px;
     opacity: 0.95;
-    text-shadow: none; /* 텍스트 그림자 제거 */
+    text-shadow: none; /* 텍스트 그림자 제거 유지 */
 }
 
 /* ------------------------------------- */
@@ -197,12 +195,12 @@ body::after {
     flex-grow: 1;
     padding: 18px 25px;
     height: 58px;
-    border: 1px solid rgba(0, 0, 0, 0.2); /* 어두운 테두리 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* 옅은 검은색 테두리 */
     border-radius: 12px;
     font-size: 1.2em;
     min-width: 260px; /* 최소 너비 */
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 유지 */
+    background-color: #eeeeee; /* ⭐ 약간 회색 배경으로 변경 ⭐ */
     backdrop-filter: blur(5px);
     color: #333333; /* 어두운 텍스트 유지 */
     transition: all 0.3s ease;
@@ -215,7 +213,7 @@ body::after {
 #email-form input[type="email"]:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* 포커스 시 어두운 테두리 유지 */
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #ffffff; /* 포커스 시 흰색 */
 }
 
 /* 버튼 스타일 (흰색~회색 그라데이션) */
@@ -259,12 +257,12 @@ body::after {
 .social-links-footer {
     width: 100%;
     padding: 20px 0; /* 푸터 패딩 줄여서 전체 높이 조절 */
-    background-color: rgba(0, 0, 0, 0.8); /* ⭐ 검은색 배경으로 변경 (반투명) ⭐ */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 ⭐ */
     backdrop-filter: blur(5px);
     text-align: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 유지 */
     margin-top: -20px; /* 푸터를 위로 올림 (content-wrapper padding-bottom과 함께 약 100px 효과) */
-    border-top: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 상단 테두리 */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 상단 테두리 유지 */
 }
 
 .social-icons {
@@ -277,21 +275,21 @@ body::after {
     display: block; /* 링크 영역 확장 */
     width: 50px; /* 아이콘 크기 */
     height: 50px; /* 아이콘 크기 */
-    background-color: rgba(255, 255, 255, 0.1); /* 투명한 흰색 배경 (아이콘 내부 색상 대비) */
-    border-radius: 50%; /* 원형 */
+    background-color: transparent; /* ⭐ 배경색 투명으로 변경 ⭐ */
+    border-radius: 50%; /* 원형 유지 */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* ⭐ 그림자 제거 ⭐ */
     overflow: hidden; /* 이미지가 동그라미 밖으로 나가지 않도록 숨김 */
-    border: 2px solid white; /* ⭐ 하얀색 스트로크 추가 ⭐ */
+    border: 2px solid white; /* ⭐ 하얀색 스트로크 유지 ⭐ */
 }
 
 .social-icons a:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* 호버 시 배경색 변경 */
-    transform: translateY(-5px) scale(1.1); /* 약간 위로 이동 및 커짐 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 그림자 강화 */
+    background-color: rgba(255, 255, 255, 0.1); /* ⭐ 호버 시 투명한 흰색 배경으로 변경 ⭐ */
+    transform: translateY(-5px) scale(1.1); /* 약간 위로 이동 및 커짐 유지 */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* ⭐ 호버 시 그림자도 흰색 계열로 변경 ⭐ */
 }
 
 .social-icons img {
