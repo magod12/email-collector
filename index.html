@@ -1,323 +1,84 @@
-/* style.css 파일 전체 내용입니다. 기존 내용은 모두 지우고 이걸 붙여넣으세요. */
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Awesome Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://docs.google.com/forms/d/e/1FAIpQLSd7H_nrfT3pXQTAnY3vy3oIIeyivO1rctt5BwU8a1km2NReNw/viewform" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">M</div>
+                YourBrand
+            </a>
+            <nav class="main-nav">
+                </nav>
+        </div>
+    </header>
 
-/* ------------------------------------- */
-/* 0. 구글 폰트 가져오기 (세련된 'Inter' 폰트) */
-/* ------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    <main class="content-wrapper">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Collect Radar.</h1>
+                <p>Track Your Collection with Precision</p>
 
+                <form id="email-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email address" required name="email">
+                        <button type="submit">Join</button>
+                    </div>
+                </form>
+                <div id="message"></div> 
+            </div>
+        </section>
+    </main>
 
-/* ------------------------------------- */
-/* 1. 전체 페이지 기본 스타일 */
-/* ------------------------------------- */
-body {
-    font-family: 'Inter', sans-serif; /* 모던하고 고급스러운 폰트 적용 */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #1a1a2e;
-    color: #e0e0e0;
-    line-height: 1.6;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    position: relative;
-}
+    <script>
+    
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKtYEDPw5vGraR-xwPfuBXAif0CFsfu3p5Yk_FNr0dAP-AFAtZh_jPCAYc8ObptVEZ/exec'; 
 
-/* 배경 이미지 및 그라디언트 오버레이 */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* ⭐⭐⭐ 여기에 당신의 이미지 파일 이름 `alpine-7703065_1920.jpg`을 넣어주세요! ⭐⭐⭐ */
-    background-image: url('alpine-7703065_1920.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px) brightness(0.95);
-    z-index: -2;
-    transform: scale(1.02);
-}
+        document.getElementById('email-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); 
 
-body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, rgba(10, 10, 30, 0.05) 0%, rgba(20, 20, 60, 0.25) 100%);
-    z-index: -1;
-}
+            const emailInput = this.querySelector('input[type="email"]');
+            const messageDiv = document.getElementById('message'); 
+            const email = emailInput.value.trim();
 
-/* ------------------------------------- */
-/* 2. 헤더 (상단 메뉴) 스타일 */
-/* ------------------------------------- */
-.main-header {
-    width: 100%;
-    padding: 15px 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
+           
+            messageDiv.textContent = ''; 
+            messageDiv.style.color = ''; 
 
-/* 헤더 컨테이너: 왼쪽 여백 "손톱만큼"만 남김 */
-.header-container {
-    max-width: 1200px; /* 이 값은 여전히 유지하여 콘텐츠 중앙 정렬을 돕지만, 왼쪽 끝에는 붙음 */
-    margin: 0 auto;
-    padding: 0; /* ⭐⭐⭐ 이 부분을 0으로 수정했습니다. ⭐⭐⭐ */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+            if (!email) {
+                
+                return;
+            }
 
-/* brand-logo 스타일: 아이콘과 로고 텍스트를 가로로 정렬 */
-.brand-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    /* ⭐ 추가: 왼쪽 끝에 붙도록 padding-left 추가 ⭐ */
-    padding-left: 15px; /* 모바일 대응 padding-left와 동일하게 맞춰줍니다. */
-}
+            try {
+                await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: new FormData(this) 
+                });
 
+                
+                messageDiv.textContent = 'submitted.'; 
+                messageDiv.style.color = '#aaffaa'; 
 
-/* ⭐⭐⭐ logo-icon 스타일: M 박스 크기 및 폰트 크기 조정 ⭐⭐⭐ */
-.logo-icon {
-    width: 30px; /* 40px -> 30px로 줄임 */
-    height: 30px; /* 40px -> 30px로 줄임 */
-    background-color: #FFD700;
-    color: #333;
-    font-size: 1.2em; /* 1.5em -> 1.2em으로 줄여 M 글자 크기 조정 */
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px; /* 모서리 둥글기 조정 */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* 그림자 약하게 */
-    margin-right: 5px; 
-}
+            } catch (error) {
+                console.error('Error during form submission:', error);
+                messageDiv.textContent = 'submitted.'; 
+                messageDiv.style.color = '#aaffaa';
+            } finally {
+                emailInput.value = ''; 
 
-/* YourBrand 텍스트 스타일 */
-.brand-logo { 
-    font-size: 1.8em;
-    font-weight: 900; 
-    color: white;
-    text-decoration: none;
-    letter-spacing: -0.05em; 
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); 
-    line-height: 1; 
-}
-
-
-.main-nav a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 1em;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: white;
-}
-
-/* ------------------------------------- */
-/* 3. 메인 콘텐츠 래퍼 (헤더에 의해 밀리도록) */
-/* ------------------------------------- */
-.content-wrapper {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 80px; /* 고정 헤더 높이만큼 콘텐츠 밀어내기 */
-}
-
-/* ------------------------------------- */
-/* 4. 히어로 섹션 (메인 콘텐츠 카드 영역) 스타일 */
-/* ------------------------------------- */
-.hero-section {
-    width: 90%;
-    max-width: 900px;
-    padding: 40px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    position: relative;
-    z-index: 1;
-
-    background-color: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* ------------------------------------- */
-/* 5. 히어로 섹션 내부 콘텐츠 스타일 (텍스트) */
-/* ------------------------------------- */
-.hero-content {
-    max-width: 700px;
-    margin: 0 auto;
-    z-index: 1;
-}
-
-.hero-content h1 {
-    font-size: 3.5em;
-    font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: -0.04em;
-    line-height: 1.2;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.hero-content p {
-    font-size: 1.2em;
-    font-weight: 400;
-    margin-bottom: 30px;
-    opacity: 0.95;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* ------------------------------------- */
-/* 6. 폼 스타일 */
-/* ------------------------------------- */
-#email-form {
-    background: none;
-    padding: 0;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 0;
-    box-shadow: none;
-    backdrop-filter: none;
-    border: none;
-}
-
-.input-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* 입력창 크기 및 폰트 복원 및 강화 */
-#email-form input[type="email"] {
-    flex-grow: 1;
-    padding: 18px 25px;
-    height: 58px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-    font-size: 1.2em;
-    min-width: 260px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    color: white;
-    transition: all 0.3s ease;
-}
-
-#email-form input[type="email"]::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-#email-form input[type="email"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* 버튼 크기 및 폰트 복원 및 강화 */
-#email-form button {
-    background-image: linear-gradient(to bottom right, #ffffff 0%, #f0f0f0 100%);
-    color: #333;
-    padding: 18px 35px;
-    height: 58px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-#email-form button:hover {
-    background-image: linear-gradient(to bottom right, #e8e8e8 0%, #d8d8d8 100%);
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* ------------------------------------- */
-/* 7. 메시지 영역 스타일 */
-/* ------------------------------------- */
-#message {
-    margin-top: 30px;
-    font-size: 1.4em;
-    text-align: center;
-    color: #aaffaa; 
-    font-weight: bold;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* ------------------------------------- */
-/* 8. 모바일 반응형 (화면이 작아질 때) */
-/* ------------------------------------- */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 10px 0;
-    }
-    .header-container {
-        padding: 0;
-    }
-    .brand-logo { 
-        padding-left: 10px; 
-        font-size: 1.5em; 
-        font-weight: 900;
-        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-    }
-    .logo-icon {
-        width: 28px; 
-        height: 28px; 
-        font-size: 1.1em; 
-        border-radius: 5px; 
-        margin-right: 3px;
-    }
-    .main-nav {
-        display: none;
-    }
-    .content-wrapper {
-        padding-top: 60px;
-    }
-    .hero-section {
-        width: 95%;
-        padding: 30px 25px;
-    }
-    .hero-content h1 {
-        font-size: 2.2em;
-        margin-bottom: 15px;
-    }
-    .hero-content p {
-        font-size: 1em;
-        margin-bottom: 25px;
-    }
-    #email-form input[type="email"],
-    #email-form button {
-        padding: 14px 20px;
-        height: 50px;
-        font-size: 1.0em;
-        min-width: unset;
-        width: 100%;
-    }
-}
+                setTimeout(() => {
+                    messageDiv.textContent = '';
+                    messageDiv.style.color = '';
+                }, 5000); 
+            }
+        });
+    </script>
+</body>
+</html>
