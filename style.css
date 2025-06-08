@@ -16,8 +16,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f0f0f0; /* 배경색을 밝은 회색으로 변경 */
-    color: #333333; /* 텍스트 색상을 어두운 회색으로 변경 */
+    background-color: #f0f0f0; /* 배경색을 밝은 회색으로 유지 */
+    color: #333333; /* 텍스트 색상을 어두운 회색으로 유지 */
     line-height: 1.6;
     overflow-x: hidden; /* 가로 스크롤 방지 */
     box-sizing: border-box;
@@ -54,14 +54,14 @@ body::after {
 .main-header {
     width: 100%;
     padding: 15px 0;
-    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+    background-color: rgba(0, 0, 0, 0.8); /* ⭐ 검은색 배경으로 변경 (반투명) ⭐ */
     backdrop-filter: blur(10px); /* 배경 블러 효과 */
     position: fixed; /* 상단 고정 */
     top: 0;
     left: 0;
     z-index: 1000; /* 다른 요소 위에 오도록 설정 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 옅은 하단 테두리 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 그림자 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 하단 테두리 */
 }
 
 /* 헤더 컨테이너: 왼쪽 여백 "손톱만큼"만 남김 */
@@ -79,12 +79,12 @@ body::after {
     display: flex;
     align-items: center;
     text-decoration: none; /* 밑줄 제거 */
-    color: #333333; /* 텍스트 색상 어둡게 */
+    color: white; /* ⭐ 텍스트 색상 흰색으로 변경 ⭐ */
     padding-left: 15px; /* 왼쪽 끝에 붙도록 패딩 유지 */
     font-size: 1.7em; /* 글자 크기 유지 */
     font-weight: 900; 
     letter-spacing: -0.05em; 
-    text-shadow: none; /* 텍스트 그림자 제거 */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 추가 */
     line-height: 1; 
 }
 
@@ -93,12 +93,12 @@ body::after {
     height: 45px; /* 로고 이미지 높이 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
-    /* collectradar.png 파일의 흰색 배경을 투명하게 편집했다면 filter: brightness(0); 로 검은색으로 변경 가능 */
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2)); /* 검은색 그림자 효과 */
+    /* collectradar.png 파일이 검은색 로고이므로, 검은색 배경에서 흰색으로 보이게 필터 적용 */
+    filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* ⭐ 로고 색상 반전 및 흰색 그림자 ⭐ */
 }
 
 .main-nav a {
-    color: rgba(51, 51, 51, 0.8); /* 반투명 어두운 색 */
+    color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 */
     text-decoration: none;
     font-size: 1em;
     margin-left: 25px;
@@ -106,7 +106,7 @@ body::after {
 }
 
 .main-nav a:hover {
-    color: #333333; /* 호버 시 더 진하게 변경 */
+    color: white; /* 호버 시 흰색으로 변경 */
 }
 
 /* ------------------------------------- */
@@ -137,11 +137,11 @@ body::after {
     position: relative;
     z-index: 1;
 
-    background-color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 */
+    background-color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 유지 */
     backdrop-filter: blur(8px); /* 블러 효과 */
     border-radius: 20px; /* 모서리 둥글게 */
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* 깊은 그림자 */
-    border: 1px solid rgba(0, 0, 0, 0.05); /* 옅은 테두리 */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* 옅은 테두리 유지 */
 }
 
 /* ------------------------------------- */
@@ -202,26 +202,26 @@ body::after {
     font-size: 1.2em;
     min-width: 260px; /* 최소 너비 */
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 유지 */
     backdrop-filter: blur(5px);
-    color: #333333; /* 어두운 텍스트 */
+    color: #333333; /* 어두운 텍스트 유지 */
     transition: all 0.3s ease;
 }
 
 #email-form input[type="email"]::placeholder {
-    color: rgba(51, 51, 51, 0.7); /* 플레이스홀더 텍스트 색상 */
+    color: rgba(51, 51, 51, 0.7); /* 플레이스홀더 텍스트 색상 유지 */
 }
 
 #email-form input[type="email"]:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* 포커스 시 어두운 테두리 */
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* 포커스 시 어두운 테두리 유지 */
     background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* 버튼 스타일 (흰색~회색 그라데이션) */
 #email-form button {
-    background-image: linear-gradient(to bottom right, #333333 0%, #000000 100%); /* 어두운 그라데이션 */
-    color: #ffffff; /* 흰색 텍스트 */
+    background-image: linear-gradient(to bottom right, #333333 0%, #000000 100%); /* 어두운 그라데이션 유지 */
+    color: #ffffff; /* 흰색 텍스트 유지 */
     padding: 18px 35px;
     height: 58px;
     border: none;
@@ -232,13 +232,13 @@ body::after {
     transition: all 0.3s ease;
     letter-spacing: 0.05em;
     white-space: nowrap; /* 줄바꿈 방지 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* 그림자 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* 그림자 유지 */
 }
 
 #email-form button:hover {
-    background-image: linear-gradient(to bottom right, #000000 0%, #333333 100%); /* 호버 시 그라데이션 변경 */
-    transform: translateY(-3px) scale(1.01); /* 약간 위로 이동 및 커짐 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* 그림자 강화 */
+    background-image: linear-gradient(to bottom right, #000000 0%, #333333 100%); /* 호버 시 그라데이션 변경 유지 */
+    transform: translateY(-3px) scale(1.01); /* 약간 위로 이동 및 커짐 유지 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* 그림자 강화 유지 */
 }
 
 /* ------------------------------------- */
@@ -248,7 +248,7 @@ body::after {
     margin-top: 30px;
     font-size: 1.4em;
     text-align: center;
-    color: #008800; /* 성공 메시지 색상 녹색 (검은 배경에 잘 보이게) */
+    color: #008800; /* 성공 메시지 색상 녹색 (검은 배경에 잘 보이게) 유지 */
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -259,12 +259,12 @@ body::after {
 .social-links-footer {
     width: 100%;
     padding: 20px 0; /* 푸터 패딩 줄여서 전체 높이 조절 */
-    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+    background-color: rgba(0, 0, 0, 0.8); /* ⭐ 검은색 배경으로 변경 (반투명) ⭐ */
     backdrop-filter: blur(5px);
     text-align: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* 상단 그림자 */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 */
     margin-top: -20px; /* 푸터를 위로 올림 (content-wrapper padding-bottom과 함께 약 100px 효과) */
-    border-top: 1px solid rgba(0, 0, 0, 0.05); /* 옅은 상단 테두리 */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 상단 테두리 */
 }
 
 .social-icons {
@@ -277,7 +277,7 @@ body::after {
     display: block; /* 링크 영역 확장 */
     width: 50px; /* 아이콘 크기 */
     height: 50px; /* 아이콘 크기 */
-    background-color: rgba(0, 0, 0, 0.1); /* 투명한 검은색 배경 */
+    background-color: rgba(255, 255, 255, 0.1); /* 투명한 흰색 배경 (아이콘 내부 색상 대비) */
     border-radius: 50%; /* 원형 */
     display: flex;
     justify-content: center;
@@ -285,10 +285,11 @@ body::after {
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* 이미지가 동그라미 밖으로 나가지 않도록 숨김 */
+    border: 2px solid white; /* ⭐ 하얀색 스트로크 추가 ⭐ */
 }
 
 .social-icons a:hover {
-    background-color: rgba(0, 0, 0, 0.3); /* 호버 시 배경색 변경 */
+    background-color: rgba(255, 255, 255, 0.3); /* 호버 시 배경색 변경 */
     transform: translateY(-5px) scale(1.1); /* 약간 위로 이동 및 커짐 */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 그림자 강화 */
 }
@@ -297,7 +298,8 @@ body::after {
     width: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
     height: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
     object-fit: cover; /* 이미지 비율 유지하며 채우기 (가장 중요한 속성) */
-    /* filter: invert(1);  // 흰색 로고를 검은색 배경에서 잘 보이게 하려면 이 필터를 사용할 수 있습니다. */
+    /* Instagram과 Discord 아이콘은 색상이 있으므로 filter: invert(1)를 사용하지 않습니다. */
+    /* X 아이콘은 검은색 배경에 흰색 로고이므로, 이미지를 다시 첨부하지 않는 한 invert 필터를 고려해볼 수 있습니다. */
 }
 
 
@@ -357,5 +359,6 @@ body::after {
         width: 45px; /* 모바일에서 아이콘 크기 약간 줄임 */
         height: 45px;
         gap: 15px; /* 모바일에서 아이콘 간격 줄임 */
+        border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
 }
