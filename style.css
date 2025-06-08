@@ -94,7 +94,7 @@ body::after {
 
 /* 회사 로고 이미지 스타일 (확대) */
 .company-logo-img {
-    height: 45px; /* 로고 이미지 높이 조절 */
+    height: 55px; /* 로고 이미지 높이 조절 (기존 45px에서 더 확대) */
     /* object-fit: contain;  // 이미지가 너무 커지면 이 속성을 추가하여 비율 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
@@ -122,7 +122,7 @@ body::after {
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     padding-top: 80px; /* 고정 헤더 높이만큼 콘텐츠 밀어내기 */
-    padding-bottom: 80px; /* 푸터 공간 확보를 위한 패딩 */
+    padding-bottom: 0px; /* 푸터를 위로 올리기 위해 패딩 줄임 */
 }
 
 /* ------------------------------------- */
@@ -266,8 +266,8 @@ body::after {
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
     text-align: center;
-    /* margin-top: auto; 이 부분은 content-wrapper의 padding-bottom과 조화되어야 합니다. */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); /* 상단 그림자 */
+    margin-top: -20px; /* 푸터를 위로 올림 (content-wrapper padding-bottom과 함께 약 100px 효과) */
 }
 
 .social-icons {
@@ -329,7 +329,7 @@ body::after {
     }
     .content-wrapper {
         padding-top: 60px;
-        padding-bottom: 60px; /* 모바일 푸터 공간 확보 */
+        padding-bottom: 40px; /* 모바일 푸터 공간 확보 (PC보다 덜 올림) */
     }
     .hero-section {
         width: 95%;
@@ -350,6 +350,10 @@ body::after {
         font-size: 1.0em;
         min-width: unset;
         width: 100%; /* 모바일에서 폼 요소 전체 너비 */
+    }
+
+    .social-links-footer {
+        margin-top: 0; /* 모바일에서는 푸터를 많이 올리지 않음 */
     }
 
     .social-icons a {
