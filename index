@@ -22,7 +22,8 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Collect Radar.</h1>
-                <button class="apply-button">APPLY FOR SERVICE</button> <p>Track Your Collection with Precision</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7H_nrfT3pXQTAnY3vy3oIIeyivO1rctt5BwU8a1km2NReNw/viewform" class="apply-button" target="_blank" rel="noopener noreferrer">APPLY FOR SERVICE</a>
+                <p>Track Your Collection with Precision</p>
 
                 <form id="email-form">
                     <div class="input-group">
