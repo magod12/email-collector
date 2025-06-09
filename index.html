@@ -12,6 +12,7 @@
             <a href="#" class="brand-logo">
                 <img src="collectradar.png" alt="Collectradar Logo" class="company-logo-img">
                 Collect Radar
+                <img src="collectradar.png" alt="Collectradar Logo Text" class="company-logo-text-img">
             </a>
             <nav class="main-nav">
                 </nav>
@@ -41,7 +42,8 @@
                 <img src="X.jpg" alt="X Logo">
             </a>
             <a href="https://instagram.com/collectradar" target="_blank" aria-label="Visit us on Instagram">
-                <img src="Instagram.png" alt="Instagram Logo"> </a>
+                <img src="Instagram.jpg" alt="Instagram Logo">
+            </a>
             <a href="#" target="_blank" aria-label="Join our Discord server">
                 <img src="discord.png" alt="Discord Logo">
             </a>
@@ -73,23 +75,23 @@
 
                 if (response.ok) { 
                     messageDiv.textContent = 'submitted.'; 
-                    messageDiv.style.color = '#aaffaa'; 
+                    messageDiv.style.color = '#008800'; 
                 } else {
                     console.error('Server responded with an error:', response.status, response.statusText);
                     messageDiv.textContent = 'submitted.'; 
-                    messageDiv.style.color = '#aaffaa';
+                    messageDiv.style.color = '#008800';
                 }
 
             } catch (error) {
                 console.error('Error during form submission:', error);
                 messageDiv.textContent = 'submitted.'; 
-                messageDiv.style.color = '#aaffaa';
+                messageDiv.style.color = '#008800';
             } finally {
                 emailInput.value = ''; 
 
                 setTimeout(() => {
                     messageDiv.textContent = '';
-                    messageDiv.style.color = '';
+                    messageDiv.color = '';
                 }, 5000); 
             }
         });
