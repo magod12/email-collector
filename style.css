@@ -24,7 +24,7 @@ body {
     position: relative; /* 자식 요소의 absolute 위치를 위한 기준점 */
 
     /* ⭐ 배경 이미지 설정 ⭐ */
-    background-image: url('Bg.png'); /* 1920x1080 배경 이미지 파일 이름 */
+    background-image: url('bg4.png'); /* 1920x1080 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-size: cover; /* ⭐ 이미지가 화면을 꽉 채우도록 (잘릴 수 있음) ⭐ */
     background-position: center center; /* 이미지를 화면 중앙에 배치 */
@@ -111,7 +111,7 @@ body {
 .hero-section {
     width: 90%;
     max-width: 900px;
-    padding: 40px 50px;
+    padding: 30px 50px; /* ⭐ 상하 여백 줄임 ⭐ */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,7 +141,7 @@ body {
 .hero-content h1 {
     font-size: 3.5em;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* ⭐ 여기도 필요하면 조절 가능 ⭐ */
     letter-spacing: -0.04em;
     line-height: 1.2;
     text-shadow: none; /* 텍스트 그림자 제거 유지 */
@@ -150,7 +150,7 @@ body {
 .hero-content p {
     font-size: 1.2em;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* ⭐ 필요하면 조절 가능 ⭐ */
     opacity: 0.95;
     text-shadow: none; /* 텍스트 그림자 제거 유지 */
 }
@@ -238,7 +238,7 @@ body {
     font-size: 1.1em;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px; /* 이메일 폼과의 간격 */
+    margin-bottom: 20px; /* ⭐ 아래 p 태그와의 간격 ⭐ */
     letter-spacing: 0.05em;
     white-space: nowrap;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 약간 더 진한 그림자 */
@@ -342,7 +342,7 @@ body {
     }
     .hero-section {
         width: 95%;
-        padding: 30px 25px;
+        padding: 25px 25px; /* ⭐ 모바일에서 상하 여백 더 줄임 ⭐ */
     }
     .hero-content h1 {
         font-size: 2.2em;
@@ -355,7 +355,7 @@ body {
     .apply-button {
         padding: 14px 25px;
         font-size: 1em;
-        margin-bottom: 15px;
+        margin-bottom: 15px; /* ⭐ 모바일에서 버튼 아래 간격 조정 ⭐ */
     }
     #email-form input {
         padding: 14px 20px;
@@ -384,7 +384,7 @@ body {
     /* 모바일 화면에서 배경 이미지 크기 조정 */
     body {
         background-size: auto min(80vh, 100vw * (1080 / 1920));
-        background-position: bottom center;
+        background-position: center bottom;
     }
 
     @media (max-width: 480px) {
