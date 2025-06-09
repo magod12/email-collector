@@ -226,6 +226,31 @@ body {
 }
 
 /* ------------------------------------- */
+/* 6.1. "APPLY FOR SERVICE" 버튼 스타일 */
+/* ------------------------------------- */
+.apply-button {
+    background-color: black; /* 검은색 배경 */
+    color: white; /* 흰색 글자 */
+    padding: 16px 30px;
+    border: none;
+    border-radius: 12px; /* 기존 버튼과 동일한 둥근 모서리 */
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* 이메일 폼과의 간격 */
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 약간 더 진한 그림자 */
+}
+
+.apply-button:hover {
+    background-color: #333; /* 호버 시 약간 밝은 검은색 */
+    transform: translateY(-3px) scale(1.02); /* 약간 위로 이동 및 확대 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* 호버 시 그림자 더 진하게 */
+}
+
+/* ------------------------------------- */
 /* 7. 메시지 영역 스타일 */
 /* ------------------------------------- */
 #message {
@@ -327,6 +352,11 @@ body {
         font-size: 1em;
         margin-bottom: 25px;
     }
+    .apply-button {
+        padding: 14px 25px;
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
     #email-form input {
         padding: 14px 20px;
         height: 50px;
@@ -351,18 +381,15 @@ body {
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
 
-    /* ⭐ 모바일 화면에서 배경 이미지 크기 조정 (핵심 변경) ⭐ */
+    /* 모바일 화면에서 배경 이미지 크기 조정 */
     body {
-        /* 이미지의 원래 비율 (16:9)을 고려하여 너비 또는 높이를 기준으로 최소 크기 설정 */
-        /* 여기서는 뷰포트 높이의 80% (80vh)와 이미지의 자연스러운 가로 비율 중 더 큰 값을 선택하여 최소 크기 유지 */
-        background-size: auto min(80vh, 100vw * (1080 / 1920)); /* (원본 이미지 비율: 1920/1080) */
-        background-position: center bottom; /* 하단 중앙으로 위치 조정하여 이미지의 주요 부분 보존 */
+        background-size: auto min(80vh, 100vw * (1080 / 1920));
+        background-position: bottom center;
     }
 
-    /* 추가적인 작은 화면 (예: 480px 이하)에 대한 미디어 쿼리 (선택 사항) */
     @media (max-width: 480px) {
         body {
-            background-size: auto min(70vh, 100vw * (1080 / 1920)); /* 더 작은 화면에서 더 작은 최소 높이 설정 */
+            background-size: auto min(70vh, 100vw * (1080 / 1920));
         }
     }
 }
