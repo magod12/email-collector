@@ -29,15 +29,15 @@ body::after {
     content: "";
     position: fixed; /* 뷰포트에 고정 */
     bottom: -50px; /* 하단 정렬, 푸터와 살짝 겹치도록 조정 */
-    left: -150px; /* ⭐ 좌측으로 더 이동 (기존 -100px에서 -150px로 조정) ⭐ */
+    left: -200px; /* ⭐ 좌측으로 더 이동 (기존 -150px에서 -200px로 조정) ⭐ */
     width: 100%; /* 너비는 100%로 설정하고 background-size로 크기 조절 */
     height: 100%; /* 높이도 100%로 설정하고 background-size로 크기 조절 */
     background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: left bottom; /* 좌측 하단에 배치 */
-    background-size: 900px auto; /* ⭐ 가로 900px로 확대 (기존 800px에서 900px로 조정), 세로 비율 유지 ⭐ */
-    opacity: 0.15; /* ⭐ 배경처럼 흐릿하게 보이되 더 선명하게 (기존 0.1에서 0.15로 조정) ⭐ */
-    filter: grayscale(100%) blur(5px); /* ⭐ 검은색으로 보이게 필터 적용, blur 추가 (brightness(0) 제거) ⭐ */
+    background-size: 1000px auto; /* ⭐ 가로 1000px로 확대 (기존 900px에서 1000px로 조정), 세로 비율 유지 ⭐ */
+    opacity: 0.2; /* ⭐ 배경처럼 비치되 이미지 원본이 잘 보이도록 투명도 조정 (기존 0.15에서 0.2로 조정) ⭐ */
+    filter: blur(5px); /* ⭐ 필터에서 grayscale(100%) 제거, blur만 유지 ⭐ */
     z-index: -1; /* ⭐ 다른 요소 뒤에 오도록 설정 ⭐ */
     pointer-events: none; /* 마우스 이벤트를 무시하여 하단 요소 클릭 가능하게 */
 }
@@ -363,8 +363,8 @@ body::before {
     }
     /* ⭐ 변경된 부분: 모바일에서 배경 이미지 크기 및 위치 조정 ⭐ */
     body::after {
-        background-size: 550px auto; /* ⭐ 모바일에서 배경 이미지 크기 조정 (기존 450px에서 550px로 조정) ⭐ */
+        background-size: 650px auto; /* ⭐ 모바일에서 배경 이미지 크기 조정 (기존 550px에서 650px로 조정) ⭐ */
         bottom: -20px; /* 모바일에서 위치 조정 */
-        left: -100px; /* ⭐ 모바일에서 좌측으로 더 이동 (기존 -80px에서 -100px로 조정) ⭐ */
+        left: -150px; /* ⭐ 모바일에서 좌측으로 더 이동 (기존 -100px에서 -150px로 조정) ⭐ */
     }
 }
