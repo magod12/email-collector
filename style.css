@@ -27,7 +27,7 @@ body {
     background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: left bottom; /* 좌측 하단에 배치 */
-    background-size: auto 200px; /* 이미지 높이를 200px로 설정 (원하는 크기로 조정) */
+    background-size: auto 200px; /* 이미지 높이를 600px로 설정 (원하는 크기로 조정) */
 }
 
 /* 기존 배경 이미지 관련 스타일 제거 */
