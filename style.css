@@ -16,37 +16,22 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #ffffff; /* 배경색을 흰색으로 변경 */
+    background-color: #ffffff; /* 대체 배경색 (이미지 로드 전) */
     color: #333333; /* 텍스트 색상을 어두운 회색으로 유지 */
     line-height: 1.6;
     overflow-x: hidden; /* 가로 스크롤 방지 */
     box-sizing: border-box;
-    position: relative; /* ::after 가상 요소의 기준점 */
-}
+    position: relative; /* 자식 요소의 absolute 위치를 위한 기준점 */
 
-/* ⭐ 변경된 부분: 좌측 하단 배경 이미지를 위한 ::after 가상 요소 ⭐ */
-body::after {
-    content: "";
-    position: fixed; /* 뷰포트에 고정 */
-    bottom: -50px; /* 하단 정렬, 푸터와 살짝 겹치도록 조정 */
-    left: -300px; /* ⭐ 좌측으로 더 이동 ⭐ */
-    width: 100%; /* 너비는 100%로 설정하고 background-size로 크기 조절 */
-    height: 100%; /* 높이도 100%로 설정하고 background-size로 크기 조절 */
-    background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
+    /* ⭐ 새로운 배경 이미지 설정 ⭐ */
+    background-image: url('Bg.png'); /* 1920x1080 새 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
-    background-position: left bottom; /* 좌측 하단에 배치 */
-    background-size: 1400px auto; /* ⭐ 가로 1400px로 확대, 세로 비율 유지 ⭐ */
-    opacity: 0.3; /* ⭐ 배경처럼 비치되 이미지 원본이 선명하게 보이도록 투명도 조정 ⭐ */
-    filter: none; /* ⭐ 모든 필터 제거하여 이미지 선명하게 유지 ⭐ */
-    z-index: -1; /* ⭐ 다른 요소 뒤에 오도록 설정 ⭐ */
-    pointer-events: none; /* 마우스 이벤트를 무시하여 하단 요소 클릭 가능하게 */
+    background-size: cover; /* 이미지 비율 유지하며 전체 화면 덮기 */
+    background-position: center center; /* 이미지를 화면 중앙에 배치 */
+    background-attachment: fixed; /* 스크롤 시 배경 이미지 고정 */
 }
 
-/* 기존 배경 이미지 관련 스타일 제거 (이전 단계에서 이미 제거됨) */
-body::before {
-    content: none;
-}
-/* .large-bottom-left-logo는 HTML에서 제거되었으므로 CSS도 필요 없음 */
+/* ⭐ 기존 body::after 가상 요소 관련 스타일 완전히 제거 ⭐ */
 
 
 /* ------------------------------------- */
@@ -268,6 +253,10 @@ body::before {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 유지 */
     margin-top: 0; /* 푸터를 content-wrapper 아래로 이동 */
     border-top: 1px solid rgba(255, 255, 255, 0.05); /* 옅은 상단 테두리 유지 */
+    position: fixed; /* 푸터 고정 */
+    bottom: 0; /* 하단에 고정 */
+    left: 0;
+    z-index: 999; /* 헤더보다 낮지만, 메인 콘텐츠보다는 위에 오도록 */
 }
 
 .social-icons {
@@ -361,10 +350,5 @@ body::before {
         gap: 15px; /* 모바일에서 아이콘 간격 줄임 */
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
-    /* ⭐ 변경된 부분: 모바일에서 배경 이미지 크기 및 위치 조정 ⭐ */
-    body::after {
-        background-size: 800px auto; /* 모바일에서 배경 이미지 크기 조정 */
-        bottom: -20px; /* 모바일에서 위치 조정 */
-        left: -250px; /* 모바일에서 좌측으로 이동 */
-    }
+    /* 새로운 배경 이미지 사용으로 body::after는 제거되었으므로, 관련 미디어 쿼리도 필요 없음 */
 }
