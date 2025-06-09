@@ -23,23 +23,24 @@ body {
     box-sizing: border-box;
     position: relative;
 
-    /* ⭐ 새로 추가: 좌측 하단 배경 이미지 설정 ⭐ */
+    /* ⭐ 변경된 부분: 좌측 하단 배경 이미지 크기, 투명도, 필터 조정 ⭐ */
     background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: left bottom; /* 좌측 하단에 배치 */
-    background-size: auto 200px; /* 이미지 높이를 600px로 설정 (원하는 크기로 조정) */
+    background-size: 600px auto; /* ⭐ 가로 600px로 크게, 세로 비율 유지 ⭐ (원하는 크기로 조정 가능) */
+    opacity: 0.1; /* ⭐ 배경처럼 흐릿하게 보이기 위해 투명도 조절 ⭐ */
+    filter: grayscale(100%) brightness(0); /* ⭐ 검은색으로 보이게 필터 적용 ⭐ */
+    /* z-index는 body에 직접 적용하지 않습니다. 다른 요소 위에 오도록 할 필요가 없습니다. */
 }
 
-/* 기존 배경 이미지 관련 스타일 제거 */
+/* 기존 배경 이미지 관련 스타일 제거 (이전 단계에서 이미 제거됨) */
 body::before {
     content: none;
 }
 body::after {
     content: none;
 }
-.large-bottom-left-logo { /* HTML에서 해당 태그도 제거되었으므로, CSS도 비활성화 또는 제거 */
-    display: none;
-}
+/* .large-bottom-left-logo { HTML에서 해당 태그도 제거되었으므로, CSS도 비활성화 또는 제거 } */
 
 
 /* ------------------------------------- */
@@ -130,7 +131,7 @@ body::after {
     text-align: center;
     color: #333333; /* 텍스트 색상 어둡게 유지 */
     position: relative;
-    z-index: 10; /* ⭐ 불투명 유리판이 배경 이미지 위에 오도록 z-index 높임 ⭐ */
+    z-index: 10; /* 불투명 유리판이 배경 이미지 위에 오도록 z-index 높임 */
 
     /* ⭐ 반투명 유리 느낌 ⭐ */
     background-color: rgba(255, 255, 255, 0.8); /* 투명도를 높여 더 불투명하게 */
@@ -354,8 +355,8 @@ body::after {
         gap: 15px; /* 모바일에서 아이콘 간격 줄임 */
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
-    /* 모바일에서 배경 이미지 크기 및 위치 조정 (선택 사항) */
+    /* ⭐ 변경된 부분: 모바일에서 배경 이미지 크기 조정 ⭐ */
     body {
-        background-size: auto 150px; /* 모바일에서 배경 이미지 크기 조정 */
+        background-size: 300px auto; /* 모바일에서 배경 이미지 크기 조정 */
     }
 }
