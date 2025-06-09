@@ -29,7 +29,8 @@ body::before {
     content: none; /* 배경 이미지 제거 */
 }
 
-/* 새로운 배경 이미지 (블러 처리 후 좌측 하단 배치) */
+/* 캔버스 뒷 배경 (블러 처리 후 좌측 하단 배치) */
+/* 이 부분은 배경 이미지가 흰색 배경에 자연스럽게 녹아들도록 설정합니다. */
 body::after {
     content: "";
     position: fixed; /* 뷰포트에 고정 */
@@ -37,8 +38,7 @@ body::after {
     left: 0; /* 좌측 정렬 */
     width: 100%;
     height: 100%;
-    /* ⭐⭐⭐ 여기에 새로운 배경 이미지 파일 이름 `image_a98594.jpg`을 넣어주세요! ⭐⭐⭐ */
-    background-image: url('image_a98594.jpg'); /* 새로운 배경 이미지 */
+    background-image: url('image_a98594.jpg'); /* ⭐ 배경 이미지 파일 이름 확인 ⭐ */
     background-size: cover; /* 이미지를 커버하도록 설정 */
     background-position: left bottom; /* 좌측 하단에 정렬 */
     filter: blur(15px); /* 블러 강도 조절 */
@@ -47,13 +47,14 @@ body::after {
     transform: scale(1.1); /* 블러로 인한 가장자리 잘림 방지 및 약간 확대 */
 }
 
+
 /* ------------------------------------- */
 /* 2. 헤더 (상단 메뉴) 스타일 */
 /* ------------------------------------- */
 .main-header {
     width: 100%;
     padding: 15px 0;
-    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 (완전 검은색) ⭐ */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경 (완전 검은색) ⭐ */
     backdrop-filter: blur(10px); /* 배경 블러 효과 유지 */
     position: fixed; /* 상단 고정 */
     top: 0;
@@ -87,20 +88,12 @@ body::after {
     line-height: 1; 
 }
 
-/* 회사 로고 이미지 스타일 (C 로고) */
+/* 회사 로고 이미지 스타일 (헤더 좌측 상단 C 로고) */
 .company-logo-img {
     height: 45px; /* 로고 이미지 높이 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
     filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 로고 색상 반전 및 흰색 그림자 유지 */
-}
-
-/* 새로운 로고 이미지 (Collect Radar 텍스트 로고) 스타일 */
-.company-logo-text-img {
-    height: 40px; /* 텍스트 로고 높이 조절 */
-    margin-left: 10px; /* 로고와 텍스트 로고 사이 간격 */
-    vertical-align: middle;
-    filter: invert(1); /* 검은색 로고를 흰색으로 보이게 반전 */
 }
 
 .main-nav a {
@@ -125,6 +118,7 @@ body::after {
     align-items: center; /* 세로 중앙 정렬 */
     padding-top: 80px; /* 고정 헤더 높이만큼 콘텐츠 밀어내기 */
     padding-bottom: 0px; /* 푸터를 위로 올리기 위해 패딩 줄임 */
+    position: relative; /* 자식 요소의 absolute 위치를 위한 기준점 */
 }
 
 /* ------------------------------------- */
@@ -143,12 +137,12 @@ body::after {
     position: relative;
     z-index: 1;
 
-    /* ⭐ 투명한 유리 느낌 다시 (불투명도 조정 및 블러 강화) ⭐ */
-    background-color: rgba(255, 255, 255, 0.08); 
-    backdrop-filter: blur(20px); /* 블러 강도 더 증가 */
+    /* ⭐ 반투명 유리 느낌 (불투명도 높임) ⭐ */
+    background-color: rgba(255, 255, 255, 0.6); /* 투명도를 높여 더 불투명하게 */
+    backdrop-filter: blur(25px); /* 블러 강도 더 증가 */
     border-radius: 20px; /* 모서리 둥글게 유지 */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25); /* 그림자 강화 유지 */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* 옅은 흰색 테두리 유지 */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* 그림자 강화 */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 옅은 흰색 테두리 유지 */
 }
 
 /* ------------------------------------- */
@@ -209,7 +203,7 @@ body::after {
     font-size: 1.2em;
     min-width: 260px; /* 최소 너비 */
     box-sizing: border-box;
-    background-color: #f5f5f5; /* ⭐ 약간 더 밝은 회색 배경으로 변경 ⭐ */
+    background-color: #f5f5f5; /* ⭐ 약간 더 밝은 회색 배경 유지 ⭐ */
     backdrop-filter: blur(5px);
     color: #333333; /* 어두운 텍스트 유지 */
     transition: all 0.3s ease;
@@ -266,7 +260,7 @@ body::after {
 .social-links-footer {
     width: 100%;
     padding: 20px 0; /* 푸터 패딩 줄여서 전체 높이 조절 */
-    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 (완전 검은색) ⭐ */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경 (완전 검은색) ⭐ */
     backdrop-filter: blur(5px);
     text-align: center;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 유지 */
@@ -305,13 +299,25 @@ body::after {
     width: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
     height: 100%; /* 동그라미 영역 전체를 채우도록 변경 */
     object-fit: cover; /* 이미지 비율 유지하며 채우기 (가장 중요한 속성) */
-    /* Instagram과 Discord 아이콘은 색상이 있으므로 filter: invert(1)를 사용하지 않습니다. */
-    /* X 아이콘은 검은색 배경에 흰색 로고이므로, 이미지를 다시 첨부하지 않는 한 invert 필터를 고려해볼 수 있습니다. */
 }
 
+/* ------------------------------------- */
+/* 9. 좌측 하단에 크게 삽입되는 로고 이미지 스타일 */
+/* ------------------------------------- */
+.large-bottom-left-logo {
+    position: absolute; /* content-wrapper 기준으로 위치 설정 */
+    bottom: -120px; /* 푸터와 겹치지 않도록 조정, 필요에 따라 더 내릴 수 있습니다. */
+    left: -50px; /* 좌측에 배치 */
+    width: 500px; /* ⭐ 이미지 크기를 크게 조절 ⭐ */
+    height: auto; /* 비율 유지 */
+    opacity: 0.1; /* 배경처럼 흐릿하게 보이기 위해 투명도 조절 */
+    filter: invert(0) grayscale(100%) brightness(0); /* ⭐ 검은색으로 보이게 필터 적용 ⭐ */
+    z-index: 0; /* 메인 카드 뒤에 오도록 설정 */
+    pointer-events: none; /* 마우스 이벤트를 무시하여 하단 요소 클릭 가능하게 */
+}
 
 /* ------------------------------------- */
-/* 9. 모바일 반응형 (화면이 작아질 때) */
+/* 10. 모바일 반응형 (화면이 작아질 때) */
 /* ------------------------------------- */
 @media (max-width: 768px) {
     .main-header {
@@ -329,11 +335,6 @@ body::after {
     .company-logo-img {
         height: 35px;  /* 모바일에서 로고 이미지 크기 조정 (PC보다 작게 유지) */
         margin-right: 5px;
-    }
-    /* 새로 추가된 텍스트 로고 모바일 크기 조정 */
-    .company-logo-text-img {
-        height: 30px; 
-        margin-left: 8px;
     }
     .main-nav {
         display: none; /* 모바일에서 네비게이션 숨김 */
@@ -372,5 +373,11 @@ body::after {
         height: 45px;
         gap: 15px; /* 모바일에서 아이콘 간격 줄임 */
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
+    }
+    /* 모바일에서 좌측 하단 큰 로고 조정 */
+    .large-bottom-left-logo {
+        width: 250px; /* 모바일에서 크기 줄임 */
+        bottom: -60px;
+        left: -30px;
     }
 }
