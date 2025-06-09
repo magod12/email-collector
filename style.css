@@ -22,30 +22,22 @@ body {
     overflow-x: hidden; /* 가로 스크롤 방지 */
     box-sizing: border-box;
     position: relative; /* ::after 가상 요소의 기준점 */
-
-    /* ⭐ 변경된 부분: body의 배경 이미지 관련 속성 제거 ⭐ */
-    /* background-image: none; */
-    /* background-repeat: no-repeat; */
-    /* background-position: left bottom; */
-    /* background-size: 600px auto; */
-    /* opacity: 0.1; */
-    /* filter: grayscale(100%) brightness(0); */
 }
 
-/* ⭐ 새로 추가된 부분: 좌측 하단 배경 이미지를 위한 ::after 가상 요소 ⭐ */
+/* ⭐ 변경된 부분: 좌측 하단 배경 이미지를 위한 ::after 가상 요소 ⭐ */
 body::after {
     content: "";
     position: fixed; /* 뷰포트에 고정 */
     bottom: -50px; /* 하단 정렬, 푸터와 살짝 겹치도록 조정 */
-    left: -100px; /* ⭐ 좌측으로 더 이동 ⭐ */
+    left: -150px; /* ⭐ 좌측으로 더 이동 (기존 -100px에서 -150px로 조정) ⭐ */
     width: 100%; /* 너비는 100%로 설정하고 background-size로 크기 조절 */
     height: 100%; /* 높이도 100%로 설정하고 background-size로 크기 조절 */
-    background-image: url('dsdssdsd.png'); /* 배경 이미지 파일 이름 */
+    background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: left bottom; /* 좌측 하단에 배치 */
-    background-size: 800px auto; /* ⭐ 가로 800px로 확대, 세로 비율 유지 ⭐ */
-    opacity: 0.1; /* ⭐ 배경처럼 흐릿하게 보이기 위해 투명도 조절 ⭐ */
-    filter: grayscale(100%) brightness(0); /* ⭐ 검은색으로 보이게 필터 적용 ⭐ */
+    background-size: 900px auto; /* ⭐ 가로 900px로 확대 (기존 800px에서 900px로 조정), 세로 비율 유지 ⭐ */
+    opacity: 0.15; /* ⭐ 배경처럼 흐릿하게 보이되 더 선명하게 (기존 0.1에서 0.15로 조정) ⭐ */
+    filter: grayscale(100%) blur(5px); /* ⭐ 검은색으로 보이게 필터 적용, blur 추가 (brightness(0) 제거) ⭐ */
     z-index: -1; /* ⭐ 다른 요소 뒤에 오도록 설정 ⭐ */
     pointer-events: none; /* 마우스 이벤트를 무시하여 하단 요소 클릭 가능하게 */
 }
@@ -371,8 +363,8 @@ body::before {
     }
     /* ⭐ 변경된 부분: 모바일에서 배경 이미지 크기 및 위치 조정 ⭐ */
     body::after {
-        background-size: 450px auto; /* 모바일에서 배경 이미지 크기 조정 */
+        background-size: 550px auto; /* ⭐ 모바일에서 배경 이미지 크기 조정 (기존 450px에서 550px로 조정) ⭐ */
         bottom: -20px; /* 모바일에서 위치 조정 */
-        left: -80px;
+        left: -100px; /* ⭐ 모바일에서 좌측으로 더 이동 (기존 -80px에서 -100px로 조정) ⭐ */
     }
 }
