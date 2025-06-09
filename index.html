@@ -23,7 +23,7 @@
             <div class="hero-content">
                 <h1>Collect Radar.</h1>
                 <p>Track Your Collection with Precision</p>
-
+                <button class="apply-button">APPLY FOR SERVICE</button>
                 <form id="email-form">
                     <div class="input-group">
                         <input type="email" placeholder="Enter your email address" required name="email">
@@ -41,7 +41,7 @@
                 <img src="X.jpg" alt="X Logo">
             </a>
             <a href="https://instagram.com/collectradar" target="_blank" aria-label="Visit us on Instagram">
-                <img src="Instagram.png" alt="Instagram Logo">
+                <img src="Instagram.jpg" alt="Instagram Logo">
             </a>
             <a href="#" target="_blank" aria-label="Join our Discord server">
                 <img src="discord.png" alt="Discord Logo">
@@ -55,7 +55,7 @@
         document.getElementById('email-form').addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            const emailInput = this.querySelector('input[type="email"]');
+            const emailInput = this.querySelector('input');
             const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
