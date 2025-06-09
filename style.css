@@ -96,6 +96,9 @@ body::after {
     filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 로고 색상 반전 및 흰색 그림자 유지 */
 }
 
+/* ⭐ Collect Radar 텍스트 로고 제거 (이전 코드에서 사용했던 company-logo-text-img 관련 CSS는 삭제) ⭐ */
+
+
 .main-nav a {
     color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 유지 */
     text-decoration: none;
@@ -135,10 +138,10 @@ body::after {
     text-align: center;
     color: #333333; /* 텍스트 색상 어둡게 유지 */
     position: relative;
-    z-index: 1;
+    z-index: 1; /* 메인 카드 위로 오도록 설정 */
 
     /* ⭐ 반투명 유리 느낌 (불투명도 높임) ⭐ */
-    background-color: rgba(255, 255, 255, 0.6); /* 투명도를 높여 더 불투명하게 */
+    background-color: rgba(255, 255, 255, 0.8); /* 투명도를 높여 더 불투명하게 */
     backdrop-filter: blur(25px); /* 블러 강도 더 증가 */
     border-radius: 20px; /* 모서리 둥글게 유지 */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* 그림자 강화 */
@@ -306,12 +309,12 @@ body::after {
 /* ------------------------------------- */
 .large-bottom-left-logo {
     position: absolute; /* content-wrapper 기준으로 위치 설정 */
-    bottom: -120px; /* 푸터와 겹치지 않도록 조정, 필요에 따라 더 내릴 수 있습니다. */
+    bottom: -100px; /* 푸터와 겹치지 않도록 조정, 필요에 따라 더 내릴 수 있습니다. */
     left: -50px; /* 좌측에 배치 */
     width: 500px; /* ⭐ 이미지 크기를 크게 조절 ⭐ */
     height: auto; /* 비율 유지 */
-    opacity: 0.1; /* 배경처럼 흐릿하게 보이기 위해 투명도 조절 */
-    filter: invert(0) grayscale(100%) brightness(0); /* ⭐ 검은색으로 보이게 필터 적용 ⭐ */
+    opacity: 0.08; /* ⭐ 배경처럼 흐릿하게 보이기 위해 투명도 조절 (더 흐릿하게) ⭐ */
+    filter: grayscale(100%) brightness(0); /* ⭐ 검은색으로 보이게 필터 적용 (invert(0) 제거) ⭐ */
     z-index: 0; /* 메인 카드 뒤에 오도록 설정 */
     pointer-events: none; /* 마우스 이벤트를 무시하여 하단 요소 클릭 가능하게 */
 }
@@ -377,7 +380,7 @@ body::after {
     /* 모바일에서 좌측 하단 큰 로고 조정 */
     .large-bottom-left-logo {
         width: 250px; /* 모바일에서 크기 줄임 */
-        bottom: -60px;
-        left: -30px;
+        bottom: -50px; /* 모바일에서 위치 조정 */
+        left: -20px;
     }
 }
