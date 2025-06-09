@@ -16,17 +16,17 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #ffffff; /* ⭐ 이미지 로드 전 또는 공백 채우기용 흰색 배경색 ⭐ */
+    background-color: #ffffff; /* ⭐ 흰색 배경색 유지 (여백 채우기용) ⭐ */
     color: #333333; /* 텍스트 색상을 어두운 회색으로 유지 */
     line-height: 1.6;
     overflow-x: hidden; /* 가로 스크롤 방지 */
     box-sizing: border-box;
     position: relative; /* 자식 요소의 absolute 위치를 위한 기준점 */
 
-    /* ⭐ 새로운 배경 이미지 설정 ⭐ */
-    background-image: url('Bg.png'); /* 1920x1080 새 배경 이미지 파일 이름 */
+    /* ⭐ 배경 이미지 설정 ⭐ */
+    background-image: url('bg4.png'); /* 1920x1080 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
-    background-size: contain; /* ⭐ 이미지 비율 유지하며 전체 내용이 보이도록, 공백 생길 수 있음 ⭐ */
+    background-size: cover; /* ⭐ 이미지가 화면을 꽉 채우도록 (잘릴 수 있음) ⭐ */
     background-position: center center; /* 이미지를 화면 중앙에 배치 */
     background-attachment: fixed; /* 스크롤 시 배경 이미지 고정 */
 }
@@ -351,8 +351,18 @@ body {
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
 
+    /* ⭐ 모바일 화면에서 배경 이미지 크기 조정 (핵심 변경) ⭐ */
     body {
-        background-size: auto 200px; /* ⭐ 작은 화면에서 배경 이미지 세로 최소 높이 설정 (예시: 200px) ⭐ */
-        background-position: bottom center; /* 작은 화면에서 하단 중앙으로 위치 조정 (선택 사항) */
+        /* 이미지의 원래 비율 (16:9)을 고려하여 너비 또는 높이를 기준으로 최소 크기 설정 */
+        /* 여기서는 뷰포트 높이의 80% (80vh)와 이미지의 자연스러운 가로 비율 중 더 큰 값을 선택하여 최소 크기 유지 */
+        background-size: auto min(80vh, 100vw * (1080 / 1920)); /* (원본 이미지 비율: 1920/1080) */
+        background-position: center bottom; /* 하단 중앙으로 위치 조정하여 이미지의 주요 부분 보존 */
+    }
+
+    /* 추가적인 작은 화면 (예: 480px 이하)에 대한 미디어 쿼리 (선택 사항) */
+    @media (max-width: 480px) {
+        body {
+            background-size: auto min(70vh, 100vw * (1080 / 1920)); /* 더 작은 화면에서 더 작은 최소 높이 설정 */
+        }
     }
 }
