@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #ffffff; /* 대체 배경색 (이미지 로드 전) */
+    background-color: #ffffff; /* ⭐ 이미지 로드 전 또는 공백 채우기용 흰색 배경색 ⭐ */
     color: #333333; /* 텍스트 색상을 어두운 회색으로 유지 */
     line-height: 1.6;
     overflow-x: hidden; /* 가로 스크롤 방지 */
@@ -26,13 +26,10 @@ body {
     /* ⭐ 새로운 배경 이미지 설정 ⭐ */
     background-image: url('bg4.png'); /* 1920x1080 새 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
-    background-size: cover; /* 이미지 비율 유지하며 전체 화면 덮기 */
+    background-size: contain; /* ⭐ 이미지 비율 유지하며 전체 내용이 보이도록, 공백 생길 수 있음 ⭐ */
     background-position: center center; /* 이미지를 화면 중앙에 배치 */
     background-attachment: fixed; /* 스크롤 시 배경 이미지 고정 */
 }
-
-/* ⭐ 기존 body::after 가상 요소 관련 스타일 완전히 제거 ⭐ */
-
 
 /* ------------------------------------- */
 /* 2. 헤더 (상단 메뉴) 스타일 */
@@ -350,5 +347,4 @@ body {
         gap: 15px; /* 모바일에서 아이콘 간격 줄임 */
         border: 1.5px solid white; /* 모바일에서 스트로크 두께 조정 */
     }
-    /* 새로운 배경 이미지 사용으로 body::after는 제거되었으므로, 관련 미디어 쿼리도 필요 없음 */
 }
