@@ -40,7 +40,7 @@ body::after {
     left: -100px; /* ⭐ 좌측으로 더 이동 ⭐ */
     width: 100%; /* 너비는 100%로 설정하고 background-size로 크기 조절 */
     height: 100%; /* 높이도 100%로 설정하고 background-size로 크기 조절 */
-    background-image: url('collectradar.png'); /* 배경 이미지 파일 이름 */
+    background-image: url('dsdssdsd.png'); /* 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-position: left bottom; /* 좌측 하단에 배치 */
     background-size: 800px auto; /* ⭐ 가로 800px로 확대, 세로 비율 유지 ⭐ */
