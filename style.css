@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f0f0f0; /* 배경색을 밝은 회색으로 유지 */
+    background-color: #ffffff; /* ⭐ 배경색을 흰색으로 변경 ⭐ */
     color: #333333; /* 텍스트 색상을 어두운 회색으로 유지 */
     line-height: 1.6;
     overflow-x: hidden; /* 가로 스크롤 방지 */
@@ -53,7 +53,7 @@ body::after {
 .main-header {
     width: 100%;
     padding: 15px 0;
-    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 ⭐ */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 (완전 검은색) ⭐ */
     backdrop-filter: blur(10px); /* 배경 블러 효과 유지 */
     position: fixed; /* 상단 고정 */
     top: 0;
@@ -87,12 +87,20 @@ body::after {
     line-height: 1; 
 }
 
-/* 회사 로고 이미지 스타일 */
+/* 회사 로고 이미지 스타일 (C 로고) */
 .company-logo-img {
     height: 45px; /* 로고 이미지 높이 유지 */
     margin-right: 8px; /* 로고 텍스트와의 간격 유지 */
     vertical-align: middle; /* 텍스트와 세로 중앙 정렬 유지 */
     filter: invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 로고 색상 반전 및 흰색 그림자 유지 */
+}
+
+/* 새로운 로고 이미지 (Collect Radar 텍스트 로고) 스타일 */
+.company-logo-text-img {
+    height: 40px; /* 텍스트 로고 높이 조절 */
+    margin-left: 10px; /* 로고와 텍스트 로고 사이 간격 */
+    vertical-align: middle;
+    filter: invert(1); /* 검은색 로고를 흰색으로 보이게 반전 */
 }
 
 .main-nav a {
@@ -135,11 +143,12 @@ body::after {
     position: relative;
     z-index: 1;
 
-    background-color: rgba(255, 255, 255, 0.08); /* ⭐ 투명한 유리 느낌 다시 (불투명도 조정) ⭐ */
-    backdrop-filter: blur(15px); /* ⭐ 블러 강도 증가 ⭐ */
+    /* ⭐ 투명한 유리 느낌 다시 (불투명도 조정 및 블러 강화) ⭐ */
+    background-color: rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(20px); /* 블러 강도 더 증가 */
     border-radius: 20px; /* 모서리 둥글게 유지 */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25); /* 그림자 강화 */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* 옅은 흰색 테두리 */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25); /* 그림자 강화 유지 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 옅은 흰색 테두리 유지 */
 }
 
 /* ------------------------------------- */
@@ -195,12 +204,12 @@ body::after {
     flex-grow: 1;
     padding: 18px 25px;
     height: 58px;
-    border: 1px solid rgba(0, 0, 0, 0.1); /* 옅은 검은색 테두리 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* 옅은 검은색 테두리 유지 */
     border-radius: 12px;
     font-size: 1.2em;
     min-width: 260px; /* 최소 너비 */
     box-sizing: border-box;
-    background-color: #eeeeee; /* ⭐ 약간 회색 배경으로 변경 ⭐ */
+    background-color: #f5f5f5; /* ⭐ 약간 더 밝은 회색 배경으로 변경 ⭐ */
     backdrop-filter: blur(5px);
     color: #333333; /* 어두운 텍스트 유지 */
     transition: all 0.3s ease;
@@ -257,7 +266,7 @@ body::after {
 .social-links-footer {
     width: 100%;
     padding: 20px 0; /* 푸터 패딩 줄여서 전체 높이 조절 */
-    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 ⭐ */
+    background-color: #000000; /* ⭐ 더 진한 검은색 배경으로 변경 (완전 검은색) ⭐ */
     backdrop-filter: blur(5px);
     text-align: center;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* 상단 그림자 유지 */
@@ -275,21 +284,21 @@ body::after {
     display: block; /* 링크 영역 확장 */
     width: 50px; /* 아이콘 크기 */
     height: 50px; /* 아이콘 크기 */
-    background-color: transparent; /* ⭐ 배경색 투명으로 변경 ⭐ */
+    background-color: transparent; /* 배경색 투명으로 유지 */
     border-radius: 50%; /* 원형 유지 */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    box-shadow: none; /* ⭐ 그림자 제거 ⭐ */
+    box-shadow: none; /* 그림자 제거 유지 */
     overflow: hidden; /* 이미지가 동그라미 밖으로 나가지 않도록 숨김 */
-    border: 2px solid white; /* ⭐ 하얀색 스트로크 유지 ⭐ */
+    border: 2px solid white; /* 하얀색 스트로크 유지 */
 }
 
 .social-icons a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* ⭐ 호버 시 투명한 흰색 배경으로 변경 ⭐ */
+    background-color: rgba(255, 255, 255, 0.1); /* 호버 시 투명한 흰색 배경으로 변경 유지 */
     transform: translateY(-5px) scale(1.1); /* 약간 위로 이동 및 커짐 유지 */
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* ⭐ 호버 시 그림자도 흰색 계열로 변경 ⭐ */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* 호버 시 그림자도 흰색 계열로 변경 유지 */
 }
 
 .social-icons img {
@@ -320,6 +329,11 @@ body::after {
     .company-logo-img {
         height: 35px;  /* 모바일에서 로고 이미지 크기 조정 (PC보다 작게 유지) */
         margin-right: 5px;
+    }
+    /* 새로 추가된 텍스트 로고 모바일 크기 조정 */
+    .company-logo-text-img {
+        height: 30px; 
+        margin-left: 8px;
     }
     .main-nav {
         display: none; /* 모바일에서 네비게이션 숨김 */
