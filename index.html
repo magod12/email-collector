@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="collectradar.png" alt="Large Collectradar Logo" class="large-bottom-left-logo">
-
     <header class="main-header">
         <div class="header-container">
             <a href="#" class="brand-logo">
@@ -32,7 +30,7 @@
                         <button type="submit">Join</button>
                     </div>
                 </form>
-                <div id="message"></div> 
+                <div id="message"></div>
             </div>
         </section>
     </main>
@@ -52,17 +50,17 @@
     </footer>
 
     <script>
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKtYEDPw5vGraR-xwPfuBXAif0CFsfu3p5Yk_FNr0dAP-AFAtZh_jPCAYc8ObptVEZ/exec'; 
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKtYEDPw5vGraR-xwPfuBXAif0CFsfu3p5Yk_FNr0dAP-AFAtZh_jPCAYc8ObptVEZ/exec';
 
         document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
             const emailInput = this.querySelector('input[type="email"]');
-            const messageDiv = document.getElementById('message'); 
+            const messageDiv = document.getElementById('message');
             const email = emailInput.value.trim();
 
-            messageDiv.textContent = ''; 
-            messageDiv.style.color = ''; 
+            messageDiv.textContent = '';
+            messageDiv.style.color = '';
 
             if (!email) {
                 return;
@@ -71,29 +69,29 @@
             try {
                 const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: new FormData(this) 
+                    body: new FormData(this)
                 });
 
-                if (response.ok) { 
-                    messageDiv.textContent = 'submitted.'; 
-                    messageDiv.style.color = '#008800'; 
+                if (response.ok) {
+                    messageDiv.textContent = 'submitted.';
+                    messageDiv.style.color = '#008800';
                 } else {
                     console.error('Server responded with an error:', response.status, response.statusText);
-                    messageDiv.textContent = 'submitted.'; 
+                    messageDiv.textContent = 'submitted.';
                     messageDiv.style.color = '#008800';
                 }
 
             } catch (error) {
                 console.error('Error during form submission:', error);
-                messageDiv.textContent = 'submitted.'; 
+                messageDiv.textContent = 'submitted.';
                 messageDiv.style.color = '#008800';
             } finally {
-                emailInput.value = ''; 
+                emailInput.value = '';
 
                 setTimeout(() => {
                     messageDiv.textContent = '';
                     messageDiv.color = '';
-                }, 5000); 
+                }, 5000);
             }
         });
     </script>
