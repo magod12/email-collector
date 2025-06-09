@@ -24,7 +24,7 @@ body {
     position: relative; /* 자식 요소의 absolute 위치를 위한 기준점 */
 
     /* ⭐ 새로운 배경 이미지 설정 ⭐ */
-    background-image: url('Bg.png'); /* 1920x1080 새 배경 이미지 파일 이름 */
+    background-image: url('bg2.png'); /* 1920x1080 새 배경 이미지 파일 이름 */
     background-repeat: no-repeat; /* 이미지 반복 방지 */
     background-size: cover; /* 이미지 비율 유지하며 전체 화면 덮기 */
     background-position: center center; /* 이미지를 화면 중앙에 배치 */
